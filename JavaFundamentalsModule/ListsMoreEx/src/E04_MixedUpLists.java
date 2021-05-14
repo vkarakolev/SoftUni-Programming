@@ -26,7 +26,7 @@ public class E04_MixedUpLists {
         int rangeFrom;
         int rangeTo;
 
-        if(firstElement > secondElement){
+        if(firstElement >= secondElement){
             rangeFrom = secondElement;
             rangeTo = firstElement;
         } else {
