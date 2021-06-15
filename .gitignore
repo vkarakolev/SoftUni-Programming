@@ -5,5 +5,5 @@ out
 *.iml
 
 com
-.txt
+*.txt
 resources
