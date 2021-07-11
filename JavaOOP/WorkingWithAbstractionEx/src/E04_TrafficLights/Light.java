@@ -5,11 +5,12 @@ public enum Light {
     GREEN,
     YELLOW;
 
-    public Light changeLight (Light light) {
+    public static Light changeLight (Light light) {
         switch (light) {
-            case RED -> {return GREEN;}
-            case GREEN -> {return YELLOW;}
-            case YELLOW -> {return RED;}
+            case RED : return GREEN;
+            case GREEN : return YELLOW;
+            case YELLOW : return RED;
+            default : throw new IllegalArgumentException("Unknown color.");
         }
     }
 }
