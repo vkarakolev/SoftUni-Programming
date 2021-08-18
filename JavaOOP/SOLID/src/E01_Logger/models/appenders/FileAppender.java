@@ -16,4 +16,9 @@ public class FileAppender extends BaseAppender {
     protected void append(String text) {
         this.file.write(text);
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s, File size: %d", super.toString(), this.file.getSize());
+    }
 }

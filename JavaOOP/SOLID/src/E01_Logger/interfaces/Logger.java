@@ -12,4 +12,5 @@ public interface Logger {
 
     void logFatal(String dateTime, String message);
 
+    String getLogInfo();
 }
