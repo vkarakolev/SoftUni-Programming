@@ -42,7 +42,7 @@ public class Main {
                 String dateTime = tokens[1];
                 String message = tokens[2];
 
-                logMessage(logger,reportLevel, dateTime, message);
+                logMessage(logger, reportLevel, dateTime, message);
 
                 input = scanner.nextLine();
             }
