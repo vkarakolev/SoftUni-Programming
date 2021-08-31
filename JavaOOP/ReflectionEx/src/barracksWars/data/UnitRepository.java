@@ -28,9 +28,9 @@ public class UnitRepository implements Repository {
 	public String getStatistics() {
 		StringBuilder statBuilder = new StringBuilder();
 		for (Map.Entry<String, Integer> entry : amountOfUnits.entrySet()) {
-			String formatedEntry =
+			String formattedEntry =
 					String.format("%s -> %d%n", entry.getKey(), entry.getValue());
-			statBuilder.append(formatedEntry);
+			statBuilder.append(formattedEntry);
 		}
 		statBuilder.setLength(
 				statBuilder.length() - System.lineSeparator().length());
@@ -38,8 +38,8 @@ public class UnitRepository implements Repository {
 		return statBuilder.toString();
 	}
 
-	public void removeUnit(String unitType) throws ExecutionControl.NotImplementedException {
-		// TODO: implement for problem 4
-		throw new ExecutionControl.NotImplementedException("message");
+	public void removeUnit(String unitType) {
+		int currentAmount = amountOfUnits.get(unitType);
+		this.amountOfUnits.put(unitType, currentAmount - 1);
 	}
 }
