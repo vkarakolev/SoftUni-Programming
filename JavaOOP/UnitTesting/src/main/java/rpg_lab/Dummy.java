@@ -1,6 +1,11 @@
 package rpg_lab;
 
-public class Dummy {
+import rpg_lab.interfaces.Target;
+import rpg_lab.interfaces.Weapon;
+
+import java.util.Random;
+
+public class Dummy implements Target {
 
     private int health;
     private int experience;
@@ -10,10 +15,12 @@ public class Dummy {
         this.experience = experience;
     }
 
+    @Override
     public int getHealth() {
         return this.health;
     }
 
+    @Override
     public void takeAttack(int attackPoints) {
         if (this.isDead()) {
             throw new IllegalStateException("Dummy is dead.");
@@ -22,6 +29,7 @@ public class Dummy {
         this.health -= attackPoints;
     }
 
+    @Override
     public int giveExperience() {
         if (!this.isDead()) {
             throw new IllegalStateException("Target is not dead.");
@@ -30,7 +38,14 @@ public class Dummy {
         return this.experience;
     }
 
+    @Override
     public boolean isDead() {
         return this.health <= 0;
+    }
+
+    @Override
+    public Weapon getLoot() {
+        Random random = new Random();
+        return new Axe(random.nextInt(100), random.nextInt(100));
     }
 }
