@@ -9,3 +9,4 @@ com
 resources
 *.zip
 target
+*.class
