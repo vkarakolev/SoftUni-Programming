@@ -22,17 +22,24 @@ public class Database {
             throw new OperationNotSupportedException();
         }
 
+        for (Person e : this.getElements()) {
+            if (person.getId() == e.getId() || person.getId() < 0) {
+                throw new OperationNotSupportedException();
+            }
+
+        }
+
         this.elements[++index] = person;
         this.elementsCount++;
     }
 
     public void remove() throws OperationNotSupportedException {
         try {
-			this.elements[index--] = null;
-			this.elementsCount--;			
-		} catch (ArrayIndexOutOfBoundsException ex) {
-			throw new OperationNotSupportedException();
-		}
+            this.elements[index--] = null;
+            this.elementsCount--;
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            throw new OperationNotSupportedException();
+        }
     }
 
     public Person[] getElements() {
