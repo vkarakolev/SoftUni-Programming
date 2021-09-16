@@ -33,10 +33,12 @@ public class TransactionImpl implements Comparable<TransactionImpl>, Transaction
         return status;
     }
 
+    @Override
     public String getFrom() {
         return from;
     }
 
+    @Override
     public String getTo() {
         return to;
     }

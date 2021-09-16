@@ -7,4 +7,8 @@ public interface Transaction {
     void setStatus(TransactionStatus status);
 
     double getAmount();
+
+    String getFrom();
+
+    String getTo();
 }
