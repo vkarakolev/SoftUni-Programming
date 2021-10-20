@@ -11,11 +11,11 @@ public abstract class BaseDecoration implements Decoration {
 
     @Override
     public int getComfort() {
-        return 0;
+        return this.comfort;
     }
 
     @Override
     public double getPrice() {
-        return 0;
+        return this.price;
     }
 }

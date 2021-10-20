@@ -5,5 +5,11 @@ public class FreshwaterFish extends BaseFish {
 
     public FreshwaterFish(String name, String species, double price) {
         super(name, species, price);
+        setSize(INITIAL_SIZE);
+    }
+
+    @Override
+    public void eat() {
+        setSize(super.getSize() + 3);
     }
 }

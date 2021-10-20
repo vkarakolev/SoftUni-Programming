@@ -14,7 +14,7 @@ public class EngineImpl implements Engine {
     private BufferedReader reader;
 
     public EngineImpl() {
-       // this.controller = new ControllerImpl(); //TODO implement first
+        this.controller = new ControllerImpl();
         this.reader = new BufferedReader(new InputStreamReader(System.in));
     }
 
@@ -35,6 +35,7 @@ public class EngineImpl implements Engine {
             System.out.println(result);
         }
     }
+
     private String processInput() throws IOException {
         String input = this.reader.readLine();
         String[] tokens = input.split("\\s+");
@@ -71,39 +72,52 @@ public class EngineImpl implements Engine {
         }
         return result;
     }
+
     private String addAquarium(String[] data) {
-      //TODO
-        return null;
+        String aquariumType = data[0];
+        String aquariumName = data[1];
+
+        return controller.addAquarium(aquariumType, aquariumName);
     }
 
     private String addDecoration(String[] data) {
-        //TODO
-        return null;
+        String aquariumType = data[0];
+
+        return controller.addDecoration(aquariumType);
     }
 
     private String insertDecoration(String[] data) {
-        //TODO
-        return null;
+        String aquariumName = data[0];
+        String decorationType = data[1];
+
+        return controller.insertDecoration(aquariumName, decorationType);
     }
 
     private String addFish(String[] data) {
         //{aquariumName} {fishType} {fishName} {fishSpecies} {price}
-        //TODO
-        return null;
+        String aquariumName = data[0];
+        String fishType = data[1];
+        String fishName = data[2];
+        String fishSpecies = data[3];
+        double price = Double.parseDouble(data[4]);
+
+        return controller.addFish(aquariumName, fishType, fishName, fishSpecies, price);
     }
 
     private String feedFish(String[] data) {
-        //TODO
-        return null;
+        String aquariumName = data[0];
+
+        return controller.feedFish(aquariumName);
     }
 
     private String calculateValue(String[] data) {
-        //TODO
-        return null;
+        String aquariumName = data[0];
+
+        return controller.calculateValue(aquariumName);
     }
 
     private String report() {
-        return null;
+        return controller.report();
     }
 }
 
