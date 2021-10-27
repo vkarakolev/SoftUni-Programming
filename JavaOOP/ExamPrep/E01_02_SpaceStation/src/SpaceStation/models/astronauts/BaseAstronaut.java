@@ -3,6 +3,8 @@ package SpaceStation.models.astronauts;
 import SpaceStation.models.bags.Backpack;
 import SpaceStation.models.bags.Bag;
 
+import java.util.stream.Collectors;
+
 import static SpaceStation.common.ExceptionMessages.ASTRONAUT_NAME_NULL_OR_EMPTY;
 import static SpaceStation.common.ExceptionMessages.ASTRONAUT_OXYGEN_LESS_THAN_ZERO;
 
