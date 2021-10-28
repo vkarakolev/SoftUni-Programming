@@ -8,13 +8,31 @@ import java.util.Collection;
 public class MissionImpl implements Mission {
     @Override
     public void explore(Planet planet, Collection<Astronaut> astronauts) {
-        for (Astronaut a : astronauts) {
-            while (a.canBreath()) {
-                String currentItem = planet.getItems().stream().findFirst().orElseThrow();
-                a.getBag().getItems().add(currentItem);
-                planet.getItems().remove(currentItem);
-                a.breath();
+            Collection<String> items = planet.getItems();
+            while (!items.isEmpty()) {
+                if(astronauts.isEmpty()) {
+                    break;
+                }
+
+                Astronaut currentAstronaut = astronauts.stream().findFirst().orElseThrow();
+                String currentItem = items.stream().findFirst().orElseThrow();
+                currentAstronaut.getBag().getItems().add(currentItem);
+                items.remove(currentItem);
+                currentAstronaut.breath();
+
+                if(!currentAstronaut.canBreath()) {
+                    astronauts.remove(currentAstronaut);
+                }
             }
-        }
+
+//            for (int i = 0; i < items.size(); i++) {
+//                a.getBag().getItems().add(items.get(0));
+//                items.remove(items.get(0));
+//                a.breath();
+//
+//                if(!a.canBreath()) {
+//                    astronauts.remove(a);
+//                }
+//            }
     }
 }

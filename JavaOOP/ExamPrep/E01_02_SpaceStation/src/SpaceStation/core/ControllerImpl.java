@@ -15,13 +15,13 @@ import static SpaceStation.common.ExceptionMessages.*;
 public class ControllerImpl implements Controller {
     private Repository<Astronaut> astronauts;
     private Repository<Planet> planets;
-    private int exploredPlanets;
+    private int exploredPlanetsCount;
 
 
     public ControllerImpl() {
         this.astronauts = new AstronautRepository();
         this.planets = new PlanetRepository();
-        this.exploredPlanets = 0;
+        this.exploredPlanetsCount = 0;
     }
 
     @Override
@@ -44,8 +44,11 @@ public class ControllerImpl implements Controller {
     @Override
     public String addPlanet(String planetName, String... items) {
         Planet planet = new PlanetImpl(planetName);
-        planet.getItems().addAll(Arrays.asList(items));
+        if(items.length != 0) {
+            planet.getItems().addAll(Arrays.asList(items));
+        }
         planets.add(planet);
+
         return String.format(PLANET_ADDED, planetName);
     }
 
@@ -72,18 +75,14 @@ public class ControllerImpl implements Controller {
             throw new IllegalArgumentException(PLANET_ASTRONAUTS_DOES_NOT_EXISTS);
         }
 
+        int astronautsCountBeforeMission = suitable.size();
         Planet planet = planets.findByName(planetName);
         Mission mission = new MissionImpl();
         mission.explore(planet, suitable);
+        exploredPlanetsCount++;
 
-        int deadAstronauts = 0;
-        for (Astronaut a : astronauts.getModels()) {
-            if(a.getOxygen() == 0) {
-                deadAstronauts++;
-            }
-        }
+        int deadAstronauts = astronautsCountBeforeMission - suitable.size();
 
-        exploredPlanets++;
         return String.format(PLANET_EXPLORED, planetName, deadAstronauts);
     }
 
@@ -93,17 +92,23 @@ public class ControllerImpl implements Controller {
                 .map(this::getAstronautInfo)
                 .collect(Collectors.joining(System.lineSeparator()));
 
-        return String.format("%d planets were explored!%n" +
-                "Astronauts info:%n%s", exploredPlanets, astronautsInfo);
+        String exploredPlanets = String.format(REPORT_PLANET_EXPLORED, exploredPlanetsCount);
+
+        return String.format("%s%n" +
+                "%s%n%s", exploredPlanets, REPORT_ASTRONAUT_INFO, astronautsInfo);
     }
 
     private String getAstronautInfo (Astronaut astronaut) {
         String bagOutput = astronaut.getBag().getItems().isEmpty()
                 ? "none"
-                : String.join(", ", astronaut.getBag().getItems());
+                : String.join(REPORT_ASTRONAUT_BAG_ITEMS_DELIMITER, astronaut.getBag().getItems());
 
-        return String.format("Name: %s%n" +
-                "Oxygen: %s%n" +
-                "Bag items: %s", astronaut.getName(), astronaut.getOxygen(), bagOutput);
+        String name = String.format(REPORT_ASTRONAUT_NAME, astronaut.getName());
+        String oxygen = String.format(REPORT_ASTRONAUT_OXYGEN, astronaut.getOxygen());
+        String bag = String.format(REPORT_ASTRONAUT_BAG_ITEMS, bagOutput);
+
+        return String.format("%s%n" +
+                "%s%n" +
+                "%s",name , oxygen, bag);
     }
 }
