@@ -160,6 +160,68 @@ REFERENCES customers(customer_id)
 CREATE TABLE order_items(
 order_id INT(11) NOT NULL UNIQUE,
 item_id INT(11) NOT NULL UNIQUE,
-CONSTRAINT pk_order_items
+CONSTRAINT pk_orders_items
 PRIMARY KEY (order_id, item_id)
 );
+
+ALTER TABLE order_items
+ADD CONSTRAINT fk_order_items_orders
+FOREIGN KEY (order_id)
+REFERENCES orders(order_id),
+ADD CONSTRAINT fk_order_items_items
+FOREIGN KEY (item_id)
+REFERENCES items(item_id);
+
+#Ex.6
+CREATE TABLE majors(
+major_id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(50)
+);
+
+DROP TABLE students;
+
+CREATE TABLE students(
+student_id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+student_number VARCHAR(12),
+student_name VARCHAR(50),
+major_id INT(11),
+CONSTRAINT fk_students_majors
+FOREIGN KEY (major_id)
+REFERENCES majors(major_id)
+);
+
+CREATE TABLE payments(
+payment_id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+payment_date DATE,
+payment_amount DECIMAL(8,2),
+student_id INT(11),
+CONSTRAINT fk_payments_students
+FOREIGN KEY (student_id)
+REFERENCES students(student_id)
+);
+
+CREATE TABLE subjects(
+subject_id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+subject_name VARCHAR(50)
+);
+
+CREATE TABLE agenda(
+student_id INT(11) NOT NULL UNIQUE,
+subject_id INT(11) NOT NULL UNIQUE,
+CONSTRAINT pk_agenda
+PRIMARY KEY (student_id, subject_id)
+);
+
+ALTER TABLE agenda
+ADD CONSTRAINT fk_agenda_students
+FOREIGN KEY (student_id)
+REFERENCES students(student_id),
+ADD CONSTRAINT fk_agenda_subjects
+FOREIGN KEY (subject_id)
+REFERENCES subjects(subject_id);
+    
+#Ex.9
+SELECT mountain_range, peak_name, elevation AS peak_elevation FROM mountains AS m
+JOIN peaks AS p ON m.id = p.mountain_id
+WHERE mountain_range = 'Rila'
+ORDER BY peak_elevation DESC;
