@@ -1,4 +1,4 @@
-package BookshopSystem;
+package E01_BookshopSystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

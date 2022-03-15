@@ -6,7 +6,6 @@ out
 
 com
 *.txt
-resources
 *.zip
 target
 *.class
