@@ -1,4 +1,4 @@
-package E01_BookshopSystem.Entities;
+package E01_BookshopSystem.entities;
 
 import javax.persistence.*;
 

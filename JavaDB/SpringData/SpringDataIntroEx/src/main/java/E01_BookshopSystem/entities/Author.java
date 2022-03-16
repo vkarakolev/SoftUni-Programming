@@ -1,6 +1,7 @@
-package E01_BookshopSystem.Entities;
+package E01_BookshopSystem.entities;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity(name = "authors")
 public class Author {
@@ -14,6 +15,9 @@ public class Author {
 
     @Column(name = "last_name", nullable = false)
     private String lastName;
+
+    @OneToMany(targetEntity = Book.class, mappedBy = "author")
+    private Set<Book> books;
 
     public Author() {
     }
