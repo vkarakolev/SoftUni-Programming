@@ -20,7 +20,7 @@ public interface IngredientRepository extends JpaRepository<Ingredient, Long> {
 
     @Modifying
     @Query("UPDATE Ingredient i SET i.price = i.price + i.price * :multiplier")
-    void increasePriceByPercent(@Param("multiplier")BigDecimal percent);
+    void increasePriceByPercent(@Param("multiplier") BigDecimal percent);
 
     @Modifying
     @Query("UPDATE Ingredient i SET i.price = i.price + i.price * :percent" +

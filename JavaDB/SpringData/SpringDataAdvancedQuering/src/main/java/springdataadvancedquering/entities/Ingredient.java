@@ -1,4 +1,5 @@
 package springdataadvancedquering.springdataadvancedquering.entities;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Set;

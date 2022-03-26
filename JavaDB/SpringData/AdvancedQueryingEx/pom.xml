@@ -8,11 +8,11 @@
         <version>2.6.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>SpringDataAdvancedQuering</groupId>
-    <artifactId>SpringDataAdvancedQuering</artifactId>
+    <groupId>AdvancedQueryingEx</groupId>
+    <artifactId>AdvancedQueryingEx</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SpringDataAdvancedQuering</name>
-    <description>SpringDataAdvancedQuering</description>
+    <name>AdvancedQueryingEx</name>
+    <description>AdvancedQueryingEx</description>
     <properties>
         <java.version>17</java.version>
     </properties>
