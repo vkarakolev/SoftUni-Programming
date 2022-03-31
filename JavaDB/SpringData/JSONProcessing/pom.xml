@@ -8,11 +8,11 @@
         <version>2.6.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>AutoMappingObjectsEx</groupId>
-    <artifactId>AutoMappingObjectsEx</artifactId>
+    <groupId>com.example</groupId>
+    <artifactId>JSONProcessing</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>AutoMappingObjectsEx</name>
-    <description>AutoMappingObjectsEx</description>
+    <name>JSONProcessing</name>
+    <description>JSONProcessing</description>
     <properties>
         <java.version>17</java.version>
     </properties>
