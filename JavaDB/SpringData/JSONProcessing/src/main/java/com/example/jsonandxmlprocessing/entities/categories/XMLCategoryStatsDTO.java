@@ -47,4 +47,14 @@ public class XMLCategoryStatsDTO {
     public BigDecimal getTotalRevenue() {
         return totalRevenue;
     }
+
+    @Override
+    public String toString() {
+        return "XMLCategoryStatsDTO{" +
+                "category='" + category + '\'' +
+                ", productCount=" + productCount +
+                ", averagePrice=" + averagePrice +
+                ", totalRevenue=" + totalRevenue +
+                '}';
+    }
 }
