@@ -13,8 +13,6 @@ function cooking(num, ...operations) {
 
         console.log(number);
     }
-
-    console.log();
 }
 
 cooking('32', 'chop', 'chop', 'chop', 'chop', 'chop');
