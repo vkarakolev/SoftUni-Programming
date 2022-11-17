@@ -3,6 +3,5 @@ function solve() {
 
    function onClick () {
       //   TODO:
-      
    }
 }
