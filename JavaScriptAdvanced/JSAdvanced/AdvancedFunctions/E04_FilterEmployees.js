@@ -5,10 +5,10 @@ function filterEmp(data, criteriaData) {
 
     let counter = 0;
     for(let e of employees) {
-        if(e.hasOwnProperty(criteria) && e[criteria] === value) {
+        if(e.hasOwnProperty(criteria) && e[criteria] === value || criteria === 'all') {
             console.log(`${counter}. ${e.first_name} ${e.last_name} - ${e.email}`)
             counter++;
-        }   
+        }
     }
 }
 
