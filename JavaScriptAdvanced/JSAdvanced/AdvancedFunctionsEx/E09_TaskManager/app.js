@@ -1,3 +1,9 @@
 function solve() {
-    console.log("//TODO")
+    let task;
+    let description;
+    let dueDate;
+
+    function validate() {
+        task = document.querySelector('#task');
+    }
 }
