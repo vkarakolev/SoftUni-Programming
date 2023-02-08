@@ -1,7 +1,7 @@
 .idea
 out
 *.iml
-node_modules
+JavaScriptAdvanced/JSAdvanced/UnitTestingAndErrorHandling/node_modules
 *.txt
 *.zip
 target
