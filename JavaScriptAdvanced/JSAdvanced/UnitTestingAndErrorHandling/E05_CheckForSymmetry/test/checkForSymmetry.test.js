@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const { isSymmetric} = require('../checkForSymmetry');
+const { isSymmetric } = require('../checkForSymmetry');
 
 describe('isSymmetric', () => {
     it('should not throw with an array as argument', () => {

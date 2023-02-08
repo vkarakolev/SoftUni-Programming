@@ -1,1 +1,1 @@
-This repo contains exercises from my programing courses in SoftUni.
+This repo contains exercises from my programming courses in SoftUni.
