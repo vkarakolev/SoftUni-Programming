@@ -16,7 +16,7 @@ function sortTickets(inputArray, criteria) {
 
     switch(criteria) {
         case 'destination': tickets.sort((a, b) => a.destination.localeCompare(b.destination)); break;
-        case 'price': tickets.sort((a, b) => a.price.localeCompare(b.price)); break;
+        case 'price': tickets.sort((a, b) => a.price - b.price); break;
         case 'status': tickets.sort((a, b) => a.status.localeCompare(b.status)); break;
     }
     
