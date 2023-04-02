@@ -22,27 +22,27 @@ class Contact {
     }
 
     elementFactory(tag, content = '') {
-        const e = document.createElement(tag)
-        e.innerHTML = content
+        const e = document.createElement(tag);
+        e.innerHTML = content;
 
-        return e
+        return e;
     }
 
     render(id) {
-        this.templ = this.elementFactory('article')
-        this.titleDiv = this.elementFactory('div', `${this.firstName} ${this.lastName}`)
-        this.infoBtn = this.elementFactory('button', '&#8505;')
-        this.infoDiv =this.elementFactory('div', `<span>&phone; ${this.phone}</span><span>&#9993; ${this.email}</span>`)
+        this.templ = this.elementFactory('article');
+        this.titleDiv = this.elementFactory('div', `${this.firstName} ${this.lastName}`);
+        this.titleBtn = this.elementFactory('button', '&#8505;');
+        this.infoDiv =this.elementFactory('div', `<span>&phone; ${this.phone}</span><span>&#9993; ${this.email}</span>`);
         
-        this.titleDiv.classList.add('title')
-        this.infoDiv.classList.add('info')
-        this.infoDiv.style.display = 'none'
+        this.titleDiv.classList.add('title');
+        this.infoDiv.classList.add('info');
+        this.infoDiv.style.display = 'none';
 
-        this.titleDiv.appendChild(this.infoBtn)
-        this.templ.appendChild(this.titleDiv)
-        this.templ.appendChild(this.infoDiv)
+        this.titleDiv.appendChild(this.titleBtn);
+        this.templ.appendChild(this.titleDiv);
+        this.templ.appendChild(this.infoDiv);
 
-        this.infoBtn.addEventListener('click', () => {
+        this.titleBtn.addEventListener('click', () => {
             if(this.infoDiv.style.display === 'none') {
                 this.infoDiv.style.display = 'block';
             } else {
@@ -50,7 +50,7 @@ class Contact {
             }
         });
 
-        document.getElementById(id).appendChild(this.templ)
+        document.getElementById(id).appendChild(this.templ);
     }
 }
 
