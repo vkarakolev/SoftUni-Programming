@@ -4,57 +4,54 @@ class Contact {
         this.lastName = lastName;
         this.phone = phone;
         this.email = email;
-        this.online = false;
+        this._online = false;
+    }
+
+    get online() {
+        return this._online;
+    }
+
+    set online(value) {
+        if(value) {
+            this.titleDiv.classList.add('online');
+        } else {
+            this.titleDiv.classList.remove('online');
+        }
+
+        this._online = value;
+    }
+
+    elementFactory(tag, content = '') {
+        const e = document.createElement(tag)
+        e.innerHTML = content
+
+        return e
     }
 
     render(id) {
-        let article = document.createElement('article');
-        article.classList.add('article');
+        this.templ = this.elementFactory('article')
+        this.titleDiv = this.elementFactory('div', `${this.firstName} ${this.lastName}`)
+        this.infoBtn = this.elementFactory('button', '&#8505;')
+        this.infoDiv =this.elementFactory('div', `<span>&phone; ${this.phone}</span><span>&#9993; ${this.email}</span>`)
+        
+        this.titleDiv.classList.add('title')
+        this.infoDiv.classList.add('info')
+        this.infoDiv.style.display = 'none'
 
-        let titleDiv = document.createElement('div');
-        titleDiv.classList.add('title');
-        titleDiv.textContent = `${this.firstName} ${this.lastName}`;
-        article.appendChild(titleDiv);
+        this.titleDiv.appendChild(this.infoBtn)
+        this.templ.appendChild(this.titleDiv)
+        this.templ.appendChild(this.infoDiv)
 
-        let button = document.createElement('button');
-        button.classList.add('title-button');
-        button.textContent = '\u2139';
-        titleDiv.appendChild(button);
-
-        let infoDiv = document.createElement('div');
-        infoDiv.classList.add('info');
-        infoDiv.style.display = 'none';
-        article.appendChild(infoDiv);
-
-        let phoneSpan = document.createElement('span');
-        phoneSpan.textContent = `\u260E ${this.phone}`;
-
-        let emailSpan = document.createElement('span');
-        emailSpan.textContent = `\u2709 ${this.email}`;
-
-        infoDiv.appendChild(phoneSpan);
-        infoDiv.appendChild(emailSpan);
-
-        button.addEventListener('click', () => {
-            if(infoDiv.style.display === 'none') {
-                infoDiv.style.display = 'block';
+        this.infoBtn.addEventListener('click', () => {
+            if(this.infoDiv.style.display === 'none') {
+                this.infoDiv.style.display = 'block';
             } else {
-                infoDiv.style.display = 'none';
+                this.infoDiv.style.display = 'none';
             }
         });
 
-        let onlineProp = this.online;
-        onlineProp.valueOf.addEventListener('change', () => {
-            if(this.online) {
-                titleDiv.classList.add('online');
-            } else {
-                titleDiv.classList.remove('online');
-            }
-        });
-
-        document.getElementById(id).appendChild(article);
+        document.getElementById(id).appendChild(this.templ)
     }
-
 }
 
 let contacts = [
