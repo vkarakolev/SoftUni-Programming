@@ -43,11 +43,7 @@ class Contact {
         this.templ.appendChild(this.infoDiv);
 
         this.titleBtn.addEventListener('click', () => {
-            if(this.infoDiv.style.display === 'none') {
-                this.infoDiv.style.display = 'block';
-            } else {
-                this.infoDiv.style.display = 'none';
-            }
+            this.infoDiv.style.display = this.infoDiv.style.display === 'none' ? 'block' : 'none';
         });
 
         document.getElementById(id).appendChild(this.templ);
