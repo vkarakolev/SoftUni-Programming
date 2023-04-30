@@ -8,6 +8,7 @@ async function attachArticles() {
 
     const main = document.getElementById('main')
     articles.forEach(a => {
+        debugger
         main.innerHTML += `
         <div class="accordion">
             <div class="head">
@@ -18,10 +19,12 @@ async function attachArticles() {
                 <p></p>
             </div>
         </div>`;
-        
-        let button = document.getElementById(a._id);
-        button.addEventListener('click', toggleContent);
     });
+
+    let buttons = document.getElementsByTagName('button');
+    for(let b of buttons) {
+        b.addEventListener('click', toggleContent);
+    };
 }
 
 async function toggleContent(e) {
