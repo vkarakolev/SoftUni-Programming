@@ -48,7 +48,12 @@ function createRecipeCard(recipe) {
 
 window.addEventListener('load', async () => {
     const main = document.querySelector('main');
-
+    if(sessionStorage.getItem('authToken') !== null) {
+        document.getElementById('user').style.display = 'inline-block';
+    } else {
+        document.getElementById('guest').style.display = 'inline-block';
+    }
+    
     const recipes = await getRecipes();
     const cards = recipes.map(createRecipePreview);
 
