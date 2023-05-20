@@ -50,16 +50,31 @@ window.addEventListener('load', async () => {
     const main = document.querySelector('main');
     if(sessionStorage.getItem('authToken') !== null) {
         document.getElementById('user').style.display = 'inline-block';
+        document.getElementById('logoutBtn').addEventListener('click', onLogout);
     } else {
         document.getElementById('guest').style.display = 'inline-block';
     }
-    
+
     const recipes = await getRecipes();
     const cards = recipes.map(createRecipePreview);
 
     main.innerHTML = '';
     cards.forEach(c => main.appendChild(c));
 });
+
+async function onLogout() {
+    const token = sessionStorage.getItem('authToken');
+    const url = 'http://localhost:3030/users/logout';
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'X-Authorization': token
+        }
+    });
+
+    sessionStorage.removeItem('authToken');
+    window.location = './index.html'
+}
 
 function e(type, attributes, ...content) {
     const result = document.createElement(type);
