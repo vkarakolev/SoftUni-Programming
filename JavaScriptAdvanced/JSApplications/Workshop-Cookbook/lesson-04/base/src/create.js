@@ -1,12 +1,18 @@
-const form = document.querySelector('form');
+import { showView } from "./app.js";
+import { setupCatalog } from "./catalog.js";
 
-form.addEventListener('submit', (ev => {
-    ev.preventDefault();
-    const formData = new FormData(ev.target);
-    onSubmit([...formData.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {}));
-}));
+export function setupCreate() {
+    const form = document.getElementById('create-form');
+
+    form.addEventListener('submit', (ev => {
+        ev.preventDefault();
+        const formData = new FormData(ev.target);
+        onSubmit([...formData.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {}));
+    }));
+}
 
 async function onSubmit(data) {
+    debugger;
     const body = JSON.stringify({
         name: data.name,
         img: data.img,
@@ -16,7 +22,7 @@ async function onSubmit(data) {
 
     const token = sessionStorage.getItem('authToken');
     if (token == null) {
-        return window.location.pathname = 'index.html';
+        showView('catalog-view');
     }
 
     try {
@@ -28,9 +34,10 @@ async function onSubmit(data) {
             },
             body
         });
-        
+
         if (response.status == 200) {
-            window.location.pathname = 'index.html';
+            setupCatalog();
+            showView('catalog-view');
         } else {
             throw new Error(await response.json());
         }

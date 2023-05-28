@@ -1,104 +1,65 @@
-async function getRecipes() {
-    const response = await fetch('http://localhost:3030/data/recipes');
-    const recipes = await response.json();
+import { setupCatalog } from "./catalog.js";
+import { setupCreate } from "./create.js";
+import { setupEdit } from "./edit.js";
+import { setupLogin } from "./login.js";
+import { setupRegister } from "./register.js";
 
-    return recipes;
+window.addEventListener('load', () => {
+    [...document.querySelectorAll('.nav')].map(e => e.addEventListener('click', onNavClick));
+    document.getElementById('logout').addEventListener('click', logout);
+    setUserNav();
+    setupCatalog();
+    setupRegister();
+    setupLogin();
+    setupEdit();
+    setupCreate();
+    
+    showView('catalog-view');
+});
+
+function onNavClick(e) {
+    const id = e.target.id;
+    setActiveNav(id);
+    showView(`${id}-view`);
 }
 
-async function getRecipeById(id) {
-    const response = await fetch('http://localhost:3030/data/recipes/' + id);
-    const recipe = await response.json();
-
-    return recipe;
+function setActiveNav(id) {
+    [...document.querySelectorAll('a')].forEach(a => a.id == id ? a.classList.add('active') : a.classList.remove('active'));
 }
 
-function createRecipePreview(recipe) {
-    const result = e('article', { className: 'preview', onClick: toggleCard },
-        e('div', { className: 'title' }, e('h2', {}, recipe.name)),
-        e('div', { className: 'small' }, e('img', { src: recipe.img })),
-    );
-
-    return result;
-
-    async function toggleCard() {
-        const fullRecipe = await getRecipeById(recipe._id);
-
-        result.replaceWith(createRecipeCard(fullRecipe));
+export function setUserNav() {
+    document.getElementById('nav').style.display = 'inline-block';
+    if (sessionStorage.getItem('authToken') != null) {
+        document.getElementById('user').style.display = 'inline-block';
+        document.getElementById('guest').style.display = 'none';
+    } else {
+        document.getElementById('guest').style.display = 'inline-block';
+        document.getElementById('user').style.display = 'none';
     }
 }
 
-function createRecipeCard(recipe) {
-    const result = e('article', {},
-        e('h2', {}, recipe.name),
-        e('div', { className: 'band' },
-            e('div', { className: 'thumb' }, e('img', { src: recipe.img })),
-            e('div', { className: 'ingredients' },
-                e('h3', {}, 'Ingredients:'),
-                e('ul', {}, recipe.ingredients.map(i => e('li', {}, i))),
-            )
-        ),
-        e('div', { className: 'description' },
-            e('h3', {}, 'Preparation:'),
-            recipe.steps.map(s => e('p', {}, s))
-        ),
-    );
+export function showView(id) {
+    setUserNav();
 
-    return result;
+    const navId = id.split('-')[0];
+    setActiveNav(navId);
+
+    [...document.querySelectorAll('section')].forEach(s => s.style.display = 'none');
+    document.getElementById(`${id}`).style.display = 'block';
 }
 
 async function logout() {
+    const token = sessionStorage.getItem('authToken');
     const response = await fetch('http://localhost:3030/users/logout', {
         method: 'get',
         headers: {
-            'X-Authorization': sessionStorage.getItem('authToken')
+            'X-Authorization': token
         },
     });
-    if (response.status == 200) {
+    if (response.ok) {
         sessionStorage.removeItem('authToken');
-        window.location.pathname = 'index.html';
+        showView('catalog-view');
     } else {
-        console.error(await response.json());
+        console.error('Error');
     }
-}
-
-window.addEventListener('load', async () => {
-    if (sessionStorage.getItem('authToken') != null) {
-        document.getElementById('user').style.display = 'inline-block';
-        document.getElementById('logoutBtn').addEventListener('click', logout);
-    } else {
-        document.getElementById('guest').style.display = 'inline-block';
-    }
-
-    const main = document.querySelector('main');
-
-    const recipes = await getRecipes();
-    const cards = recipes.map(createRecipePreview);
-
-    main.innerHTML = '';
-    cards.forEach(c => main.appendChild(c));
-});
-
-function e(type, attributes, ...content) {
-    const result = document.createElement(type);
-
-    for (let [attr, value] of Object.entries(attributes || {})) {
-        if (attr.substring(0, 2) == 'on') {
-            result.addEventListener(attr.substring(2).toLocaleLowerCase(), value);
-        } else {
-            result[attr] = value;
-        }
-    }
-
-    content = content.reduce((a, c) => a.concat(Array.isArray(c) ? c : [c]), []);
-
-    content.forEach(e => {
-        if (typeof e == 'string' || typeof e == 'number') {
-            const node = document.createTextNode(e);
-            result.appendChild(node);
-        } else {
-            result.appendChild(e);
-        }
-    });
-
-    return result;
 }

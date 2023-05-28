@@ -1,10 +1,14 @@
-const form = document.querySelector('form');
+import { showView } from "./app.js";
 
-form.addEventListener('submit', (ev => {
-    ev.preventDefault();
-    const formData = new FormData(ev.target);
-    onSubmit([...formData.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {}));
-}));
+export function setupRegister() {
+    const form = document.getElementById('register-form');
+
+    form.addEventListener('submit', (ev => {
+        ev.preventDefault();
+        const formData = new FormData(ev.target);
+        onSubmit([...formData.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {}));
+    }));
+}
 
 async function onSubmit(data) {
     if (data.password != data.rePass) {
@@ -27,7 +31,8 @@ async function onSubmit(data) {
         const data = await response.json();
         if (response.status == 200) {
             sessionStorage.setItem('authToken', data.accessToken);
-            window.location.pathname = 'index.html';
+            sessionStorage.setItem('userId', data._id);
+            showView('catalog-view');
         } else {
             throw new Error(data.message);
         }
