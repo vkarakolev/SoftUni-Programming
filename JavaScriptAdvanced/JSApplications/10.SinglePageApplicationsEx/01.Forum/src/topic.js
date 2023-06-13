@@ -86,9 +86,14 @@ export async function showTopicView(e) {
     const topic = await getTopics(url + `/${id}`);
 
     //TO DO:
+    topicDetails(topic);
 
     document.getElementById('home-view').style.display = 'none';
     document.getElementById('topic-view').style.display = 'block';
 
     console.log(id);
+}
+
+function topicDetails(topic) {
+    
 }
