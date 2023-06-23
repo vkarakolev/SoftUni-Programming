@@ -1,28 +1,13 @@
+import { del, get } from './api.js';
 import { e } from './dom.js';
 import { showEdit } from './edit.js';
 
-
-async function getRecipeById(id) {
-    const response = await get('/data/recipes/' + id);
-    const recipe = await response.json();
-
-    return recipe;
-}
-
 async function deleteRecipeById(id) {
-    try {
-        const response = await del('/data/recipes/' + id);
+    const response = await del('/data/recipes/' + id);
 
-        if (response.status != 200) {
-            const error = await response.json();
-            throw new Error(error.message);
-        }
-
-        section.innerHTML = '';
-        section.appendChild(e('article', {}, e('h2', {}, 'Recipe deleted')));
-    } catch (err) {
-        alert(err.message);
-    }
+    section.innerHTML = '';
+    section.appendChild(e('article', {}, e('h2', {}, 'Recipe deleted')));
+    return response;
 }
 
 function createRecipeCard(recipe) {
@@ -75,7 +60,7 @@ export async function showDetails(id) {
     main.innerHTML = '';
     main.appendChild(section);
 
-    const recipe = await getRecipeById(id);
+    const recipe = await get('/data/recipes/' + id);
     section.innerHTML = '';
     section.appendChild(createRecipeCard(recipe));
 }

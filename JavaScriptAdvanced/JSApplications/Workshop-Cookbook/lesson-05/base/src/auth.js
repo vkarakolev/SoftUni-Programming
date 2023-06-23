@@ -1,8 +1,9 @@
 import { get } from "./api.js";
+import { showHome } from "./home.js";
 import { clearUserData } from "./util.js";
 
 export function setUserNav() {
-    if (sessionStorage.getItem('authToken') != null) {
+    if (sessionStorage.getItem('accessToken') != null) {
         document.getElementById('user').style.display = 'inline-block';
         document.getElementById('guest').style.display = 'none';
     } else {
@@ -13,12 +14,7 @@ export function setUserNav() {
 
 export async function logout() {
     const response = await get('/users/logout');
-    
-    if (response.ok) {
-        clearUserData();
-        setUserNav();
-        showCatalog();
-    } else {
-        console.error(await response.json());
-    }
+
+    clearUserData();
+    showHome();
 }

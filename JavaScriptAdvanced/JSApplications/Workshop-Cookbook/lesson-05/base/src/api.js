@@ -6,24 +6,34 @@ async function request(method, url, body) {
         headers: {}
     }
 
-    if(body !== undefined) {
+    if (body !== undefined) {
         options.headers['Content-Type'] = 'application/json';
         options.body = JSON.stringify(body);
     }
 
     const token = sessionStorage.getItem('accessToken');
-    if(token) {
+
+    if (token) {
         options.headers['X-Authorization'] = token;
     }
 
-    const response = await fetch(host + url, options);
+    try {
+        const response = await fetch(host + url, options);
 
-    if(!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message);
-    };
-   
-    return response.json();
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.message);
+        };
+
+        if (response.status == 204) {
+            return response;
+        }
+
+        return response.json();
+    } catch (err) {
+        alert(err.message);
+        throw err;
+    }
 }
 
 export const get = request.bind(null, 'get');

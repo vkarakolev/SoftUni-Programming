@@ -1,6 +1,6 @@
-import { setUserNav } from './auth.js';
+import { post } from './api.js';
 import { showHome } from './home.js';
-import { setUserData } from './util.js';
+import { createSubmitHandler, setUserData } from './util.js';
 
 
 let main;
@@ -11,32 +11,20 @@ export function setupLogin(targetMain, targetSection, onActiveNav) {
     main = targetMain;
     section = targetSection;
     setActiveNav = onActiveNav;
+}
 
-    const form = targetSection.querySelector('form');
+createSubmitHandler('login-form', onLogin);
 
-    form.addEventListener('submit', (ev => {
-        ev.preventDefault();
-        const formData = new FormData(ev.target);
-        onSubmit([...formData.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {}));
-    }));
+async function onLogin(data) {
+    const url = '/users/login';
+    const body = {
+        email: data.email,
+        password: data.password
+    };
+    const userData = await post(url, body);
 
-    async function onSubmit(data) {
-        const url = '/users/login';
-        const body = {
-            email: data.email,
-            password: data.password
-        };
-
-        try {
-            const userData = await post(url, body);
-
-            setUserData(userData);
-            setUserNav();
-            showHome();
-        } catch (err) {
-            console.error(err.message);
-        }
-    }
+    setUserData(userData);
+    showHome();
 }
 
 export function showLogin() {

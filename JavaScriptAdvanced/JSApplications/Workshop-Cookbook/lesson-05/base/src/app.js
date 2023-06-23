@@ -30,10 +30,8 @@ window.addEventListener('load', () => {
     setupDetails(main, document.getElementById('details'), setActiveNav);
     setupEdit(main, document.getElementById('edit'), setActiveNav);
     document.getElementById('views').remove();
-
     
     setupNavigation();
-
     // Start application in catalog view
     showHome();
 });

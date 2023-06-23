@@ -1,3 +1,4 @@
+import { setUserNav } from "./auth.js";
 import { showCatalog } from "./catalog.js";
 
 let main;
@@ -13,6 +14,7 @@ export function setupHome(targetMain, targetSection, onActiveNav) {
 
 export async function showHome() {
     setActiveNav('homeLink');
-    //showRecent();
+    setUserNav();
+    main.innerHTML = '';
     main.appendChild(section);
 }
