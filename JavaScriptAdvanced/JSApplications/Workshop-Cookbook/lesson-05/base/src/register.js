@@ -1,4 +1,6 @@
-import { showCatalog } from './catalog.js';
+import { setUserNav } from './auth.js';
+import { showHome } from './home.js';
+import { setUserData } from './util.js';
 
 
 let main;
@@ -22,31 +24,18 @@ export function setupRegister(targetMain, targetSection, onActiveNav) {
             return alert('Passwords don\'t match');
         }
 
-        const body = JSON.stringify({
+        const url = '/users/register'
+        const body = {
             email: data.email,
-            password: data.password,
-        });
-
+            password: data.password
+        };
+    
         try {
-            const response = await fetch('http://localhost:3030/users/register', {
-                method: 'post',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body
-            });
-            const data = await response.json();
-            if (response.status == 200) {
-                sessionStorage.setItem('authToken', data.accessToken);
-                sessionStorage.setItem('userId', data._id);
-                document.getElementById('user').style.display = 'inline-block';
-                document.getElementById('guest').style.display = 'none';
+            const userData = await post(url, body);
 
-                showCatalog();
-            } else {
-                alert(data.message);
-                throw new Error(data.message);
-            }
+            setUserData(userData);
+            setUserNav();
+            showHome();
         } catch (err) {
             console.error(err.message);
         }
@@ -56,6 +45,5 @@ export function setupRegister(targetMain, targetSection, onActiveNav) {
 
 export function showRegister() {
     setActiveNav('registerLink');
-    main.innerHTML = '';
     main.appendChild(section);
 }

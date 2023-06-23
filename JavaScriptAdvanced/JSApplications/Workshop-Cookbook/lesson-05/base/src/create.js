@@ -18,12 +18,12 @@ export function setupCreate(targetMain, targetSection, onActiveNav) {
     }));
 
     async function onSubmit(data) {
-        const body = JSON.stringify({
+        const body = {
             name: data.name,
             img: data.img,
             ingredients: data.ingredients.split('\n').map(l => l.trim()).filter(l => l != ''),
             steps: data.steps.split('\n').map(l => l.trim()).filter(l => l != '')
-        });
+        };
 
         const token = sessionStorage.getItem('authToken');
         if (token == null) {
@@ -31,14 +31,7 @@ export function setupCreate(targetMain, targetSection, onActiveNav) {
         }
 
         try {
-            const response = await fetch('http://localhost:3030/data/recipes', {
-                method: 'post',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Authorization': token
-                },
-                body
-            });
+            const response = await post('/data/recipes', body);
 
             if (response.status == 200) {
                 showDetails((await response.json())._id);
@@ -55,6 +48,5 @@ export function setupCreate(targetMain, targetSection, onActiveNav) {
 
 export function showCreate() {
     setActiveNav('createLink');
-    main.innerHTML = '';
     main.appendChild(section);
 }

@@ -3,22 +3,15 @@ import { showEdit } from './edit.js';
 
 
 async function getRecipeById(id) {
-    const response = await fetch('http://localhost:3030/data/recipes/' + id);
+    const response = await get('/data/recipes/' + id);
     const recipe = await response.json();
 
     return recipe;
 }
 
 async function deleteRecipeById(id) {
-    const token = sessionStorage.getItem('authToken');
-
     try {
-        const response = await fetch('http://localhost:3030/data/recipes/' + id, {
-            method: 'delete',
-            headers: {
-                'X-Authorization': token
-            }
-        });
+        const response = await del('/data/recipes/' + id);
 
         if (response.status != 200) {
             const error = await response.json();

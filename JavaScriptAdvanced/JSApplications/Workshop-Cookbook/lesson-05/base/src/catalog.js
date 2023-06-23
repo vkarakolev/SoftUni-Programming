@@ -1,11 +1,9 @@
 import { e } from './dom.js';
 import { showDetails } from './details.js';
+import { get } from './api.js';
 
 async function getRecipes() {
-    const response = await fetch('http://localhost:3030/data/recipes?select=' + encodeURIComponent('_id,name,img'));
-    const recipes = await response.json();
-
-    return recipes;
+    return get('/data/recipes?select=' + encodeURIComponent('_id,name,img'));
 }
 
 function createRecipePreview(recipe) {
@@ -38,6 +36,5 @@ export async function showCatalog() {
 
     const fragment = document.createDocumentFragment();
     cards.forEach(c => fragment.appendChild(c));
-    section.innerHTML = '';
-    section.appendChild(fragment);
+    section.replaceChildren(fragment);
 }

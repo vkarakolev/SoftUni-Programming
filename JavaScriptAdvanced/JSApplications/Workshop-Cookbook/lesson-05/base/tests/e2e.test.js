@@ -36,4 +36,10 @@ describe('E2E tests', function () {
         await context.close();
     });
 
+    it('catalog page loads and render content', async () => {
+        await page.goto('http://localhost:5500');
+        await page.waitForSelector('.main #catalog');
+        
+    
+    });
 });
