@@ -1,3 +1,7 @@
+import {html, render} from '../node_modules/lit-html/lit-html.js';
+
+//export {html, render};
+
 export function e(type, attributes, ...content) {
     const result = document.createElement(type);
 

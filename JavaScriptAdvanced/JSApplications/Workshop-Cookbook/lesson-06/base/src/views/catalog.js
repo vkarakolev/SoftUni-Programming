@@ -1,6 +1,10 @@
 import { e } from '../dom.js';
+import { html, render } from '../node_modules/lit-html/lit-html.js';
 import { getRecipes, getRecipeCount } from '../api/data.js';
 
+const catalogTemplate = () => html`
+    <section id="catalog">
+    </section>`;
 
 export function setupCatalog(section, nav) {
     return showCatalog;
@@ -18,10 +22,9 @@ export function setupCatalog(section, nav) {
         cards.forEach(c => fragment.appendChild(c));
         fragment.appendChild(createPager(page, pages));
 
-        section.innerHTML = '';
-        section.appendChild(fragment);
+        render(fragment, catalogTemplate);
 
-        return section;
+        return catalogTemplate;
     }
 
     function createPager(page, pages, header) {

@@ -1,3 +1,7 @@
+import { render } from "../node_modules/lit-html/lit-html.js";
+
+const main = document.querySelector('main');
+
 export function createNav(main, navbar) {
     const views = {};
     const links = {};
@@ -25,9 +29,8 @@ export function createNav(main, navbar) {
     }
 
     async function goTo(name, ...params) {
-        main.innerHTML = '';
         const result = await views[name](...params);
-        main.appendChild(result);
+        render(result, main);
     }
 
     function registerView(name, section, setup, navId) {

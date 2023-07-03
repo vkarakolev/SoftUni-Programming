@@ -11,8 +11,11 @@
   "dependencies": {
     "chai": "^4.3.7",
     "http-server": "^14.1.1",
+    "lit-html": "^2.7.4",
     "mocha": "^10.2.0",
-    "playwright": "^1.33.0",
-    "playwright-chromium": "^1.33.0"
+    "playwright": "^1.33.0"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.35.1"
   }
 }
