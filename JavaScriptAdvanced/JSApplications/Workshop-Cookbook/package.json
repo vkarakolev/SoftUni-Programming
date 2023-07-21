@@ -25,5 +25,8 @@
     "url": "https://github.com/viktorpts/js-apps-workshop/issues"
   },
   "homepage": "https://github.com/viktorpts/js-apps-workshop#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "page": "^1.11.6"
+  }
 }
