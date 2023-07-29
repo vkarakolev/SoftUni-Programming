@@ -1,4 +1,4 @@
-import { getAll } from "../data/furniture.js";
+import { getAll } from "../data/furnitureData.js";
 import { html, repeat } from "../lib.js";
 
 const homeTemplate = (furniture) => html`
@@ -14,10 +14,11 @@ const homeTemplate = (furniture) => html`
 
 export async function showHome(ctx, next) {
     const furniture = await getAll();
+    ctx.checkUserNav();
     ctx.render(homeTemplate(furniture));
 }
 
-function createFurnitureTemplate(data) {
+export function createFurnitureTemplate(data) {
     return html`
     <div class="col-md-4">
         <div class="card text-white bg-primary">
@@ -25,7 +26,7 @@ function createFurnitureTemplate(data) {
                     <img src="${data.img}" />
                     <p>${data.description}</p>
                     <footer>
-                        <p>Price: <span>${data.price}</span></p>
+                        <p>Price: <span>${data.price + ' $'}</span></p>
                     </footer>
                     <div>
                         <a href= ${`/catalog/${data._id}`} class="btn btn-info">Details</a>
