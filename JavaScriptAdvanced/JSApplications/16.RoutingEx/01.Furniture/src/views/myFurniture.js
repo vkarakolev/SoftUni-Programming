@@ -18,4 +18,5 @@ export async function showMyFurniture(ctx, next) {
     const url = `/data/catalog?where=_ownerId%3D%22${userId}%22`;
     const furniture = await get(url);
     ctx.render(myFurnitureTemplate(furniture));
+    ctx.checkUserNav();
 }

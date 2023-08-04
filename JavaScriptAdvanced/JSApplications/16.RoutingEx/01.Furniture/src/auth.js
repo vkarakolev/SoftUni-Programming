@@ -15,20 +15,17 @@ const userTemplate = html`
 <div id="user">
     <a id='createLink' href="/create" >Create Furniture</a>
     <a id='profileLink' href="/my-furniture" >My Publications</a>
-    <a id="logoutBtn">Logout</a>
+    <a @click=${onLogout} id="logoutBtn">Logout</a>
 </div>`;
 
 export function checkUserNav() {
-    if(sessionStorage.getItem('accessToken') !== null) {
-        render(userTemplate, nav);
-        document.getElementById('logoutBtn').addEventListener('click', onLogout);
-    } else {
-        render(guestTemplate, nav);
-    }
+    sessionStorage.getItem('accessToken') !== null
+    ? render(userTemplate, nav)
+    : render(guestTemplate, nav);
 }
 
 function setActiveNav(e) {
-    // const links = nav.querySelectorAll('a', 'div a');
+    // const links = nav.querySelector('a', 'div a');
     // links.forEach(a => {
     //     a.classList.remove('active');
     // });

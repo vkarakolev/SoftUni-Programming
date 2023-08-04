@@ -15,33 +15,33 @@ const editTemplate = (details) => html`
         <div class="col-md-4">
             <div class="form-group">
                 <label class="form-control-label" for="new-make">Make</label>
-                <input class="form-control" id="new-make" type="text" name="make" value=${details.make}>
+                <input class="form-control" id="new-make" type="text" name="make" .value=${details.make}>
             </div>
             <div class="form-group has-success">
                 <label class="form-control-label" for="new-model">Model</label>
-                <input class="form-control" id="new-model" type="text" name="model" value=${details.model}>
+                <input class="form-control" id="new-model" type="text" name="model" .value=${details.model}>
             </div>
             <div class="form-group has-danger">
                 <label class="form-control-label" for="new-year">Year</label>
-                <input class="form-control" id="new-year" type="number" name="year" value=${details.year}>
+                <input class="form-control" id="new-year" type="number" name="year" .value=${details.year}>
             </div>
             <div class="form-group">
                 <label class="form-control-label" for="new-description">Description</label>
-                <input class="form-control" id="new-description" type="text" name="description" value=${details.description}>
+                <input class="form-control" id="new-description" type="text" name="description" .value=${details.description}>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label class="form-control-label" for="new-price">Price</label>
-                <input class="form-control" id="new-price" type="number" name="price" value=${details.price}>
+                <input class="form-control" id="new-price" type="number" name="price" .value=${details.price}>
             </div>
             <div class="form-group">
                 <label class="form-control-label" for="new-image">Image</label>
-                <input class="form-control" id="new-image" type="text" name="img" value=${details.img}>
+                <input class="form-control" id="new-image" type="text" name="img" .value=${details.img}>
             </div>
             <div class="form-group">
                 <label class="form-control-label" for="new-material">Material (optional)</label>
-                <input class="form-control" id="new-material" type="text" name="material" value=${details.material}>
+                <input class="form-control" id="new-material" type="text" name="material" .value=${details.material}>
             </div>
             <input type="submit" class="btn btn-info" value="Edit" />
         </div>

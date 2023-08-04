@@ -13,11 +13,12 @@ function decorateContext(ctx, next) {
         const container = document.querySelector('.container');
         render(content, container);
     };
-    next();
-
+    
     ctx.checkUserNav = function() {
         checkUserNav();
     };
+    
+    next();
 }
 
 page(decorateContext);

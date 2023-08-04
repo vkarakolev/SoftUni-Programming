@@ -51,7 +51,9 @@ let context;
 
 export function showCreate(ctx, next) {
     ctx.render(createTemplate);
+    ctx.checkUserNav();
     createSubmitHandler('create-form', onCreate);
+    
     context = ctx;
 }
 

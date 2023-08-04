@@ -30,6 +30,7 @@ let context;
 export function showLogin(ctx, next) {
     ctx.render(loginTemplate);
     createSubmitHandler('login-form', onLogin);
+    ctx.checkUserNav();
     context = ctx;
 }
 

@@ -34,6 +34,7 @@ let context;
 export function showRegister(ctx, next) {
     ctx.render(registerTemplate);
     createSubmitHandler('register-form', onRegister);
+    ctx.checkUserNav();
     context = ctx;
 }
 
