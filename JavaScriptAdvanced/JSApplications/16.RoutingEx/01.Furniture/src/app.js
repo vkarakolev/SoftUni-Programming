@@ -1,5 +1,6 @@
-import { checkUserNav } from './auth.js';
+import { checkUserNav } from './data/auth.js';
 import { page, render } from './lib.js';
+import { getUserData } from './util.js';
 import { showCreate } from './views/create.js';
 import { showDetails } from './views/details.js';
 import { showEdit } from './views/edit.js';
@@ -17,10 +18,21 @@ function decorateContext(ctx, next) {
     ctx.checkUserNav = function() {
         checkUserNav();
     };
-    
+
     next();
 }
 
+function session(ctx, next) {
+    const user = getUserData();
+
+    if(user) {
+        ctx.user = user;
+    }
+
+    next();
+}
+
+page(session);
 page(decorateContext);
 page('/', showHome);
 page('index.html', '/');

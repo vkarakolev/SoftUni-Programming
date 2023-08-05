@@ -1,15 +1,16 @@
+import { login } from "../data/auth.js";
 import { post } from "../data/api.js";
 import { html } from "../lib.js";
 import { createSubmitHandler, setUserData } from "../util.js";
 
-const loginTemplate = html`
+const loginTemplate = (onLogin) => html`
 <div class="row space-top">
     <div class="col-md-12">
         <h1>Login User</h1>
         <p>Please fill all fields.</p>
     </div>
 </div>
-<form id='login-form'>
+<form @submit=${onLogin}>
     <div class="row space-top">
         <div class="col-md-4">
             <div class="form-group">
@@ -28,20 +29,12 @@ const loginTemplate = html`
 let context;
 
 export function showLogin(ctx, next) {
-    ctx.render(loginTemplate);
-    createSubmitHandler('login-form', onLogin);
+    ctx.render(loginTemplate(createSubmitHandler(onLogin)));
     ctx.checkUserNav();
     context = ctx;
 }
 
-async function onLogin(data) {
-    const url = '/users/login'
-    const body = {
-        email: data.email,
-        password: data.password
-    };
-
-    const userData = await post(url, body);
-    setUserData(userData);
+async function onLogin(data, form) {
+    await login(data);
     context.page.redirect('/dashboard');
 }

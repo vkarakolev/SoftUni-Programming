@@ -1,15 +1,15 @@
-import { post } from "../data/api.js";
+import { register } from "../data/auth.js";
 import { html } from "../lib.js";
 import { createSubmitHandler, setUserData } from "../util.js";
 
-const registerTemplate = html`
+const registerTemplate = (onRegister) => html`
 <div class="row space-top">
     <div class="col-md-12">
         <h1>Register New User</h1>
         <p>Please fill all fields.</p>
     </div>
 </div>
-<form id='register-form'>
+<form @submit=${onRegister}>
     <div class="row space-top">
         <div class="col-md-4">
             <div class="form-group">
@@ -31,25 +31,13 @@ const registerTemplate = html`
 
 let context;
 
-export function showRegister(ctx, next) {
-    ctx.render(registerTemplate);
-    createSubmitHandler('register-form', onRegister);
+export function showRegister(ctx) {
+    ctx.render(registerTemplate(createSubmitHandler(onRegister)));
     ctx.checkUserNav();
     context = ctx;
 }
 
-async function onRegister(data) {
-    if(data.password !== data.rePass) {
-        return alert('Passwords don\'t match!');
-    };
-
-    const url = '/users/register';
-    const body = {
-        email: data.email,
-        password: data.password
-    };
-
-    const userData = await post(url, body);
-    setUserData(userData);
+async function onRegister(data, form) {
+    await register(data);
     context.page.redirect('/dashboard');
 }

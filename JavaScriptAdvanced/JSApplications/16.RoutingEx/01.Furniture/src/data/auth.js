@@ -1,9 +1,15 @@
-import { get } from "./data/api.js";
-import { html, page, render } from "./lib.js";
-import { clearUserData } from "./util.js";
+import { get, post } from "./api.js";
+import { html, page, render } from "../lib.js";
+import { clearUserData, setUserData } from "../util.js";
 
 const nav = document.querySelector('nav');
 nav.addEventListener('click', setActiveNav);
+
+const endpoints = {
+    'login': '/users/login',
+    'register': '/users/register',
+    'logout': '/users/logout'
+}
 
 const guestTemplate = html`
 <div id="guest">
@@ -35,9 +41,27 @@ function setActiveNav(e) {
     // };
 }
 
-export async function onLogout() {
-    const response = await get('/users/logout');
+export async function login({email, password}) {
+    const userData = await post(endpoints.login, {email, password});
+    setUserData(userData);
 
+    return userData;
+}
+
+export async function register({email, password, rePass}) {
+    if(password !== rePass) {
+        return alert('Passwords don\'t match!');
+    };
+
+    const userData = await post(endpoints.register, {email, password});
+    setUserData(userData);
+
+    return userData;
+}
+
+export async function onLogout() {
+    const response = await get(endpoints.logout);
     clearUserData();
+    
     page.redirect('/');
 }

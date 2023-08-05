@@ -1,8 +1,8 @@
-import { html } from "../lib.js";
+import { html, nothing } from "../lib.js";
 import { getById } from "../data/furnitureData.js";
 import { del } from "../data/api.js";
 
-const detailsTemplate = (details) => html`
+const detailsTemplate = (details, user) => html`
 <div class="row space-top">
     <div class="col-md-12">
         <h1>Furniture Details</h1>
@@ -23,10 +23,13 @@ const detailsTemplate = (details) => html`
         <p>Description: <span>${details.description}</span></p>
         <p>Price: <span>${details.price + ' $'}</span></p>
         <p>Material: <span>${details.material}</span></p>
-        <div style=${details._ownerId == sessionStorage.getItem('userId') ? 'display: block' : 'display: none'}>
-            <a href=${`/edit/${details._id}`} class="btn btn-info">Edit</a>
-            <a @click=${onDelete} href=/dashboard class="btn btn-red">Delete</a>
-        </div>
+        ${user.id == details._ownerId 
+            ? html`
+            <div>
+                <a href=${`/edit/${details._id}`} class="btn btn-info">Edit</a>
+                <a @click=${onDelete} href=/dashboard class="btn btn-red">Delete</a>
+            </div>` : nothing
+        }
     </div>
 </div>`;
 
@@ -34,7 +37,7 @@ let furnitureDetails;
 
 export async function showDetails(ctx, next) {
     furnitureDetails = await getById(ctx.params.id);
-    ctx.render(detailsTemplate(furnitureDetails));
+    ctx.render(detailsTemplate(furnitureDetails, ctx.user));
 }
 
 async function onDelete() {

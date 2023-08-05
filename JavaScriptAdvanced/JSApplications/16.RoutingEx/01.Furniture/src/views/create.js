@@ -2,14 +2,14 @@ import { post } from "../data/api.js";
 import { html } from "../lib.js";
 import { createSubmitHandler, validateFields } from "../util.js";
 
-const createTemplate = html`
+const createTemplate = (onCreate) => html`
 <div class="row space-top">
     <div class="col-md-12">
         <h1>Create New Furniture</h1>
         <p>Please fill all fields.</p>
     </div>
 </div>
-<form id='create-form'>
+<form @submit=${onCreate}>
     <div class="row space-top">
         <div class="col-md-4">
             <div class="form-group">
@@ -50,14 +50,12 @@ const createTemplate = html`
 let context;
 
 export function showCreate(ctx, next) {
-    ctx.render(createTemplate);
+    ctx.render(createTemplate(createSubmitHandler(onCreate)));
     ctx.checkUserNav();
-    createSubmitHandler('create-form', onCreate);
-    
     context = ctx;
 }
 
-async function onCreate(data) {
+async function onCreate(data, form) {
     const isValid = validateFields(data);
     
     if(!isValid) {

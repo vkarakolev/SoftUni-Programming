@@ -3,14 +3,14 @@ import { getById } from "../data/furnitureData.js";
 import { html } from "../lib.js";
 import { createSubmitHandler, validateFields } from "../util.js";
 
-const editTemplate = (details) => html`
+const editTemplate = (details, onEdit) => html`
 <div class="row space-top">
     <div class="col-md-12">
         <h1>Edit Furniture</h1>
         <p>Please fill all fields.</p>
     </div>
 </div>
-<form id='edit-form'>
+<form @submit=${onEdit}>
     <div class="row space-top">
         <div class="col-md-4">
             <div class="form-group">
@@ -52,12 +52,11 @@ let context;
 
 export async function showEdit(ctx, next) {
     const details = await getById(ctx.params.id);
-    ctx.render(editTemplate(details));
-    createSubmitHandler('edit-form', onEdit);
+    ctx.render(editTemplate(details, createSubmitHandler(onEdit)));
     context = ctx;
 }
 
-async function onEdit(data) {
+async function onEdit(data, form) {
     const isValid = validateFields(data);
 
     if(!isValid) {
