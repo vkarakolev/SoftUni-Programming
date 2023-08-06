@@ -1,6 +1,6 @@
 import { html, render } from '../lib.js';
 import { clearUserData, setUserData } from '../util.js';
-import { post } from './api.js';
+import { get, post } from './api.js';
 
 const endpoints = {
     'login': '/users/login',

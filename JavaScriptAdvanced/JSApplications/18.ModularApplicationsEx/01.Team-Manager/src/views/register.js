@@ -9,7 +9,7 @@ const registerTemplate = (onRegister, error) => html`
             <h1>Register</h1>
         </header>
         <form @submit=${onRegister} id="register-form" class="main-form pad-large">
-            ${error ? html`<div style="display: none" class="error">${error}</div>` : nothing}
+            ${error !== null ? html`<div style="display: none" class="error">${error}</div>` : nothing}
             <label>E-mail: <input type="text" name="email"></label>
             <label>Username: <input type="text" name="username"></label>
             <label>Password: <input type="password" name="password"></label>
@@ -24,7 +24,7 @@ const registerTemplate = (onRegister, error) => html`
 let context;
 
 export function showRegister(ctx) {
-    ctx.render(registerTemplate(createSubmitHandler(onRegister)));
+    ctx.render(registerTemplate(createSubmitHandler(onRegister, null)));
     ctx.checkUserNav();
     context = ctx;
 }
@@ -35,6 +35,7 @@ async function onRegister(data, form) {
         await register(data);
     } catch(err) {
         context.render(registerTemplate(createSubmitHandler(onRegister, err.message)));
+        return;
     }
 
     context.page.redirect('/my-teams');
