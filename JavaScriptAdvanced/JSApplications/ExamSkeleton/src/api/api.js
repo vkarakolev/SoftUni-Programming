@@ -1,4 +1,4 @@
-import { clearUserData } from "../util.js";
+import { clearUserData, getUserData } from "../util.js";
 
 const host = 'http://localhost:3030';
 
@@ -13,10 +13,9 @@ async function request(method, url, body) {
         options.body = JSON.stringify(body);
     }
 
-    const token = sessionStorage.getItem('accessToken');
-
-    if (token) {
-        options.headers['X-Authorization'] = token;
+    const user = getUserData();
+    if (user) {
+        options.headers['X-Authorization'] = user.accessToken;
     }
 
     try {

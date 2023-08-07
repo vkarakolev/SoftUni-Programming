@@ -1,5 +1,5 @@
 import { logout } from "../api/user.js";
-import { html, render } from "../lib.js";
+import { html, page, render } from "../lib.js";
 import { getUserData } from "../util.js";
 
 const header = document.querySelector('header');
@@ -29,5 +29,6 @@ export function updateNav() {
 
 function onLogout() {
     logout();
+    updateNav();
     page.redirect('/');
 }

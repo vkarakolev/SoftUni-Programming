@@ -1,6 +1,13 @@
-import { page } from "./lib.js";
+import { page, render } from "./lib.js";
 import { getUserData } from "./util.js";
+import { showCatalog } from "./views/catalog.js";
+import { showCreate } from "./views/create.js";
+import { showDetails } from "./views/details.js";
+import { showEdit } from "./views/edit.js";
+import { showHome } from "./views/home.js";
+import { showLogin } from "./views/login.js";
 import { updateNav } from "./views/nav.js";
+import { showRegister } from "./views/register.js";
 
 const root = document.getElementById('content');
 
@@ -17,18 +24,18 @@ function decorateContext(ctx, next) {
 }
 
 page(decorateContext);
-page('/', () => console.log('home'));
+page('/', showHome);
 page('index.html', '/');
-page('/catalog', () => console.log('catalog'));
-page('/create', () => console.log('create'));
-page('/catalog/:id', () => console.log('details'));
-page('/edit/:id', () => console.log('edit'));
-page('/login', () => console.log('login'));
-page('/register', () => console.log('register'));
+page('/catalog', showCatalog);
+page('/create', showCreate);
+page('/catalog/:id', showDetails);
+page('/edit/:id', showEdit);
+page('/login', showLogin);
+page('/register', showRegister);
 updateNav();
 
 page.start();
 
 function renderContent(content) {
-    render(content, container);
+    render(content, root);
 }

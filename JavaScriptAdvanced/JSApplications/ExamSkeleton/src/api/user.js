@@ -22,7 +22,7 @@ export async function register({email, password}) {
     return userData;
 }
 
-export async function logout() {
-    const response = await get(endpoints.logout);
+export function logout() {
+    get(endpoints.logout);
     clearUserData();
 }
