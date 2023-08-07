@@ -22,26 +22,31 @@ export function clearUserData() {
 }
 
 export function validateFields(data) {
-    let flag = true;
+    if(Object.values(data).some(e => e == '')) {
+        return alert('All fields are required!');
+    }
+    return true;
 
-    validate(data.make.length >= 4, 'new-make');
-    validate(data.model.length >= 4, 'new-model');
-    validate(data.year >= 1950 && data.year <= 2050, 'new-year');
-    validate(data.description.length > 10, 'new-description');
-    validate(data.price >= 0, 'new-price');
-    validate(typeof(data.img) == 'string' && data.img, 'new-image');
+    // let flag = true;
 
-    function validate(predicate, elementId) {
-        const element = document.getElementById(elementId);
-        element.class = 'form-control';
+    // validate(data.make.length >= 4, 'new-make');
+    // validate(data.model.length >= 4, 'new-model');
+    // validate(data.year >= 1950 && data.year <= 2050, 'new-year');
+    // validate(data.description.length > 10, 'new-description');
+    // validate(data.price >= 0, 'new-price');
+    // validate(typeof(data.img) == 'string' && data.img, 'new-image');
+
+    // function validate(predicate, elementId) {
+    //     const element = document.getElementById(elementId);
+    //     element.class = 'form-control';
         
-        if(predicate) {
-            element.classList.add('is-valid');    
-        } else {
-            element.classList.add('is-invalid');
-            flag = false;
-        };
-    };
+    //     if(predicate) {
+    //         element.classList.add('is-valid');    
+    //     } else {
+    //         element.classList.add('is-invalid');
+    //         flag = false;
+    //     };
+    // };
 
-    return flag;
+    // return flag;
 }

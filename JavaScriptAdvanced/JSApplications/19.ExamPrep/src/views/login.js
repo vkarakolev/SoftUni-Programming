@@ -26,6 +26,10 @@ export function showLogin(ctx) {
     ctx.render(loginTemplate(createSubmitHandler(onLogin)));
 
     async function onLogin(data) {
+        if(Object.values(data).some(e => e == '')) {
+            return alert('All fields are required!');
+        };
+
         await login(data);
         ctx.updateNav();
         ctx.page.redirect('/');
