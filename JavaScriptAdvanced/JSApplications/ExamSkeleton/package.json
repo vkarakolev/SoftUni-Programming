@@ -1,7 +1,7 @@
 {
-  "name": "pet-care",
+  "name": "samurider",
   "version": "1.0.0",
-  "description": "Pet Care Single Page Application",
+  "description": "Samurider Single Page Application",
   "main": "index.html",
   "scripts": {
     "test": "mocha tests",

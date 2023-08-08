@@ -5,21 +5,23 @@ import { getUserData } from "../util.js";
 const header = document.querySelector('header');
 
 const navTemplate = (hasUser) => html`
- <nav>
-    <section class="logo">
-        <img src="./images/logo.png" alt="logo">
-    </section>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/catalog">Dashboard</a></li>
+<a id="logo" href="/"><img id="logo-img" src="./images/logo.png" alt="" /></a>
+<nav>
+    <div>
+        <a href="/catalog">Motorcycles</a>
+        <a href="/search">Search</a>
+    </div>
         ${!hasUser 
             ? html`
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>`
+            <div class="guest">
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            </div>`
             : html`
-            <li><a href="/create">Create Postcard</a></li>
-            <li><a @click=${onLogout} href="javascript:void(0)">Logout</a></li>`}
-    </ul>
+            <div class="user">
+                <a href="/create">Add Motorcycle</a>
+                <a @click=${onLogout} href="javascript:void(0)">Logout</a>
+            </div>`}
 </nav>`;
 
 export function updateNav() {
