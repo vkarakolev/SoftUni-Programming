@@ -12,3 +12,5 @@ spring:
   sql:
     init:
       mode: never
+
+default.admin.pass: ${DEFAULT_ADMIN_PASS:}
