@@ -14,3 +14,7 @@ spring:
       mode: never
 
 default.admin.pass: ${DEFAULT_ADMIN_PASS:}
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE

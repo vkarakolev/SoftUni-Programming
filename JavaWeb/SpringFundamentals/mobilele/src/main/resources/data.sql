@@ -1,4 +1,4 @@
-INSERT INTO `brands` (`id`, `brand`)
+INSERT INTO `brands` (`id`, `name`)
 VALUES
     (1, 'Toyota'),
     (2, 'Ford');

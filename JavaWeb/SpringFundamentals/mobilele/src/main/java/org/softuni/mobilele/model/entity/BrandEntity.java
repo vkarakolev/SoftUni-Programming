@@ -1,20 +1,35 @@
 package org.softuni.mobilele.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "brands")
+@NamedEntityGraph(name = "brandWithModels", attributeNodes = @NamedAttributeNode("models")
+)
 public class BrandEntity extends BaseEntity {
     @Column(unique = true, nullable = false)
-    private String brand;
+    private String name;
 
-    public String getBrand() {
-        return brand;
+    @OneToMany(mappedBy = "brand", fetch = FetchType.LAZY)
+    private List<ModelEntity> models;
+
+    public String getName() {
+        return name;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public BrandEntity setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public List<ModelEntity> getModels() {
+        return models;
+    }
+
+    public BrandEntity setModels(List<ModelEntity> models) {
+        this.models = models;
+        return this;
     }
 }
