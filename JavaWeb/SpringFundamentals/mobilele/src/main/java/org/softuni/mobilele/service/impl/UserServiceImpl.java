@@ -24,7 +24,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void registerUser(UserRegistrationDTO userRegistrationDTO) {
-        System.out.println(userRegistrationDTO);
         userRepository.save(map(userRegistrationDTO));
     }
 

@@ -3,17 +3,19 @@ package org.softuni.mobilele.model.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "users")
 public class UserEntity extends BaseEntity {
     @Column(unique = true)
+    @NotEmpty
     private String email;
-
+    @NotEmpty
     private String password;
-
+    @NotEmpty
     private String firstName;
-
+    @NotEmpty
     private String lastName;
 
     private boolean active;
