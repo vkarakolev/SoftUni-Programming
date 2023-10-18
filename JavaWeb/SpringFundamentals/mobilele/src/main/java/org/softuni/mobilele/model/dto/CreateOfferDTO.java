@@ -3,6 +3,7 @@ package org.softuni.mobilele.model.dto;
 import jakarta.validation.constraints.*;
 import org.softuni.mobilele.model.enums.EngineEnum;
 import org.softuni.mobilele.model.enums.TransmissionEnum;
+import org.softuni.mobilele.model.validation.YearNotInTheFuture;
 
 public record CreateOfferDTO(
         @Positive
@@ -17,6 +18,7 @@ public record CreateOfferDTO(
         TransmissionEnum transmission,
         @NotNull(message = "Manufacturing year is required.")
         @Min(value = 1930, message = "Manufacturing year must be after 1929.")
+        @YearNotInTheFuture
         Integer year,
         @Positive
         @NotNull

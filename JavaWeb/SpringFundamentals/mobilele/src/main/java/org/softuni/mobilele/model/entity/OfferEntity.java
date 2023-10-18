@@ -1,6 +1,10 @@
 package org.softuni.mobilele.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.softuni.mobilele.model.enums.EngineEnum;
 import org.softuni.mobilele.model.enums.TransmissionEnum;
@@ -12,25 +16,27 @@ import java.util.UUID;
 @Entity
 @Table(name = "offers")
 public class OfferEntity extends BaseEntity {
+    @NotNull
     @JdbcTypeCode(Types.VARCHAR)
     private UUID uuid;
+    @NotNull
     @ManyToOne
     private ModelEntity model;
-
+    @NotNull
     private BigDecimal price;
-
+    @NotNull
     @Enumerated(EnumType.STRING)
     private EngineEnum engine;
-
+    @NotNull
     @Enumerated(EnumType.STRING)
     private TransmissionEnum transmission;
-
+    @Min(1930)
     private int year;
-
+    @Positive
     private long mileage;
-
+    @NotEmpty
     private String description;
-
+    @NotEmpty
     private String imageUrl;
 
     public ModelEntity getModel() {
