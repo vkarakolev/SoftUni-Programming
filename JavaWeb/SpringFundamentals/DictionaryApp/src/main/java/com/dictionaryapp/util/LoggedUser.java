@@ -1,0 +1,31 @@
+package com.dictionaryapp.util;
+
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
+
+import java.util.UUID;
+
+@Component
+@SessionScope
+public class LoggedUser {
+    private String username;
+    private boolean isLogged;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public LoggedUser setUsername(String username) {
+        this.username = username;
+        return this;
+    }
+
+    public boolean isLogged() {
+        return isLogged;
+    }
+
+    public LoggedUser setIsLogged(boolean isLogged) {
+        this.isLogged = isLogged;
+        return this;
+    }
+}
