@@ -15,15 +15,17 @@ public class LoggedUser {
         return username;
     }
 
-    public void setUsername(String username) {
+    public LoggedUser setUsername(String username) {
         this.username = username;
+        return this;
     }
 
     public boolean isLogged() {
         return isLogged;
     }
 
-    public void setLogged(boolean logged) {
+    public LoggedUser setLogged(boolean logged) {
         isLogged = logged;
+        return this;
     }
 }

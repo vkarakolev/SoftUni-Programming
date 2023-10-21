@@ -21,7 +21,6 @@ public class Offer extends BaseEntity {
     @NotNull
     @ManyToOne
     private Condition condition;
-
     @ManyToOne
     @NotNull
     private User createdBy;
@@ -32,39 +31,44 @@ public class Offer extends BaseEntity {
         return description;
     }
 
-    public void setDescription(String description) {
+    public Offer setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public Offer setPrice(BigDecimal price) {
         this.price = price;
+        return this;
     }
 
     public Condition getCondition() {
         return condition;
     }
 
-    public void setCondition(Condition condition) {
+    public Offer setCondition(Condition condition) {
         this.condition = condition;
+        return this;
     }
 
     public User getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(User createdBy) {
+    public Offer setCreatedBy(User createdBy) {
         this.createdBy = createdBy;
+        return this;
     }
 
     public User getBoughtBy() {
         return boughtBy;
     }
 
-    public void setBoughtBy(User boughtBy) {
+    public Offer setBoughtBy(User boughtBy) {
         this.boughtBy = boughtBy;
+        return this;
     }
 }
