@@ -4,8 +4,11 @@ import com.dictionaryapp.model.dto.UserLoginDTO;
 import com.dictionaryapp.model.dto.UserRegistrationDTO;
 import com.dictionaryapp.service.UserService;
 import com.dictionaryapp.util.LoggedUser;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,7 +24,7 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public ModelAndView login() {
+    public ModelAndView login(@ModelAttribute("userLoginDTO") UserLoginDTO userLoginDTO) {
         if(loggedUser.isLogged()) {
             return new ModelAndView("redirect:/");
         }
@@ -30,16 +33,25 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ModelAndView login(UserLoginDTO userLoginDTO) {
+    public ModelAndView login(@ModelAttribute("userLoginDTO") @Valid UserLoginDTO userLoginDTO,
+                              BindingResult bindingResult) {
         if(loggedUser.isLogged()) {
             return new ModelAndView("redirect:/");
         }
 
-        boolean isLogged = userService.login(userLoginDTO);
+        if(bindingResult.hasErrors()) {
+            return new ModelAndView("login");
+        }
 
-        String view = isLogged ? "redirect:/home" : "login";
+        boolean hasSuccessfulLogin = userService.login(userLoginDTO);
 
-        return new ModelAndView(view);
+        if(!hasSuccessfulLogin) {
+            ModelAndView modelAndView = new ModelAndView("login");
+            modelAndView.addObject("hasLoginError", true);
+            return modelAndView;
+        }
+
+        return new ModelAndView("redirect:/home");
     }
 
 
