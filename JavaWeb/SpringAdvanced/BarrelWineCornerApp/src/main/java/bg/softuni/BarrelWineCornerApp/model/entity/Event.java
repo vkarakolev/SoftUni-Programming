@@ -21,6 +21,7 @@ public class Event extends BaseEntity {
     private LocalTime hour;
     private int maxPeopleCount;
     private String description;
+    @Column(name = "image_url")
     private String imageURL;
 
 }

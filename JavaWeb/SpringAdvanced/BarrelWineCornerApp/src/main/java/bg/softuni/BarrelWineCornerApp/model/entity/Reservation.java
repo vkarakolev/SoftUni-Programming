@@ -24,5 +24,5 @@ public class Reservation extends BaseEntity {
     @Column(nullable = false)
     private LocalTime hour;
     @OneToOne(mappedBy = "reservation")
-    private User madeBy;
+    private User createdBy;
 }

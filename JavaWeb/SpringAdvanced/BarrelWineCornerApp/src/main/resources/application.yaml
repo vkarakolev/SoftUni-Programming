@@ -30,9 +30,9 @@ logging:
     org:
       hibernate:
         type:
-          descriptor: TRACE
+          descriptor:
         SQL: DEBUG
-      nodeValue: WARN
-    blog: WARN
+      nodeValue:
+    blog:
 server:
   port: 8080

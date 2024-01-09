@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,7 +24,8 @@ public class Product extends BaseEntity {
     @Min(0)
     private BigDecimal price;
     private String description;
-    @Column(nullable = false)
     @ManyToOne
     private Partner manufacturer;
+    @ManyToMany
+    private List<Order> orders;
 }
