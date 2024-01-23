@@ -15,11 +15,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(
-                        authorizeRequests ->
-                                authorizeRequests
-                                        .requestMatchers("/", "/login", "/register", "/about")
-                                        .permitAll().anyRequest().authenticated())
+//                .authorizeHttpRequests(
+//                        authorizeRequests ->
+//                                authorizeRequests
+//                                        .requestMatchers("/", "/login", "/register", "/about")
+//                                        .permitAll().anyRequest().authenticated())
                 .formLogin(
                         formLogin ->
                                 formLogin

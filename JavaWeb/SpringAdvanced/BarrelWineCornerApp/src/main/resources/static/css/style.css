@@ -1,0 +1,51 @@
+html {
+  font-family: 'Open Sans', sans-serif;
+}
+
+header {
+    background-size: cover;
+    background: #000000;
+    margin: 0rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    margin: 0;
+}
+
+nav ul li {
+    display: flex;
+    padding: 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+     color: white;
+     font-weight: bold;
+}
+
+.logo {
+    display: flex;
+    width: 60px;
+    height: 60px;
+}
+
+.logout {
+    background: none;
+    border: none;
+    color: white;
+    text-decoration:none;
+    font-size: medium;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+body {
+    margin: 0;
+}

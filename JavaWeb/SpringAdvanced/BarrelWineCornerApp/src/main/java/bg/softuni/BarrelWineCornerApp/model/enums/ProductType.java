@@ -8,5 +8,5 @@ public enum ProductType {
     WATER,
     SOFT_DRINK,
     BREAD,
-    SAUCE
+    OTHERS
 }
