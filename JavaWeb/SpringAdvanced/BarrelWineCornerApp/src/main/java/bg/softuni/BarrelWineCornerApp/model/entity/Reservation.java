@@ -15,11 +15,19 @@ import java.time.LocalTime;
 @Table(name = "reservations")
 public class Reservation extends BaseEntity {
     @Column(unique = true, nullable = false)
+    private String email;
+
+    @Column(nullable = false)
     private String clientName;
+
     @Column(nullable = false)
     private int peopleCount;
+
     @Column(nullable = false)
     private LocalDate date;
+
     @Column(nullable = false)
-    private LocalTime hour;
+    private LocalTime time;
+
+    private boolean approved;
 }
