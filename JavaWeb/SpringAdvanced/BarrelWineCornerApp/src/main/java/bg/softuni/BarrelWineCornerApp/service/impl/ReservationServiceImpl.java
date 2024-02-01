@@ -1,6 +1,8 @@
 package bg.softuni.BarrelWineCornerApp.service.impl;
 
+import bg.softuni.BarrelWineCornerApp.model.dto.AddReservationDTO;
 import bg.softuni.BarrelWineCornerApp.model.dto.ReservationViewDTO;
+import bg.softuni.BarrelWineCornerApp.model.entity.Reservation;
 import bg.softuni.BarrelWineCornerApp.repository.ReservationRepository;
 import bg.softuni.BarrelWineCornerApp.service.ReservationService;
 import lombok.RequiredArgsConstructor;
@@ -21,5 +23,11 @@ public class ReservationServiceImpl implements ReservationService {
         return reservationRepository.findAll().stream()
                 .map(reservation -> modelMapper.map(reservation, ReservationViewDTO.class))
                 .toList();
+    }
+
+    @Override
+    public void addReservation(AddReservationDTO addReservationDTO) {
+        Reservation reservation = modelMapper.map(addReservationDTO, Reservation.class);
+        reservationRepository.save(reservation);
     }
 }

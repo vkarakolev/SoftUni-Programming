@@ -20,7 +20,6 @@ public class Reservation extends BaseEntity {
     @Column(nullable = false)
     private String clientName;
 
-    @Column(nullable = false)
     private int peopleCount;
 
     @Column(nullable = false)
@@ -29,5 +28,6 @@ public class Reservation extends BaseEntity {
     @Column(nullable = false)
     private LocalTime time;
 
+    @Column(columnDefinition = "boolean default false")
     private boolean approved;
 }

@@ -18,7 +18,7 @@ public class AddReservationDTO {
     private String email;
 
     @NotNull
-    private String name;
+    private String clientName;
 
     @NotNull
     @Min(1)

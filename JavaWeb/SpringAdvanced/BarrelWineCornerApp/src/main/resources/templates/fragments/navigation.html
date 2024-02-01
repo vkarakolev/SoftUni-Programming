@@ -10,7 +10,7 @@
         <nav>
             <div class="logo">
                 <a class="logo" th:href="@{/}">
-                    <img class="logo" src="images/logo.jpg" alt="logo">
+                    <img class="logo" src="/images/logo.jpg" alt="logo">
                 </a>
             </div>
             <ul>
@@ -24,7 +24,10 @@
                     <a th:href="@{/events}">Events</a>
                 </li>
                 <li>
-                    <a th:href="@{/reservation}">Reservation</a>
+                    <a th:href="@{/reservations/create}">Reservation</a>
+                </li>
+                <li>
+                    <a th:href="@{/reservations/all}">Reservations</a>
                 </li>
                 <li>
                     <a th:href="@{/partners}">Partners</a>
