@@ -1,7 +1,7 @@
 package bg.softuni.BarrelWineCornerApp.service.impl;
 
 import bg.softuni.BarrelWineCornerApp.model.dto.AddReservationDTO;
-import bg.softuni.BarrelWineCornerApp.model.dto.ReservationViewDTO;
+import bg.softuni.BarrelWineCornerApp.model.dto.view.ReservationViewDTO;
 import bg.softuni.BarrelWineCornerApp.model.entity.Reservation;
 import bg.softuni.BarrelWineCornerApp.repository.ReservationRepository;
 import bg.softuni.BarrelWineCornerApp.service.ReservationService;

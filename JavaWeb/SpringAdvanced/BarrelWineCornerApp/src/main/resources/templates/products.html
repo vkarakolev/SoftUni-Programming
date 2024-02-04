@@ -13,23 +13,43 @@
 <div class="wrapper">
     <!-- Navigation -->
     <div th:replace="~{fragments/navigation}"></div>
-    <h1>Login</h1>
+    <h1>Products</h1>
+    <!--    Create Product-->
     <div>
-        <form th:action="@{/login}"
-              th:method="POST">
+        <form th:action="@{/products}"
+              th:method="POST"
+              th:object="${createProductDTO}">
             <div>
-                <label for="inputEmail">Email</label>
-                <input type="text" id="inputEmail" name="email" placeholder="email">
+                <label for="productName">Name</label>
+                <input type="text"
+                       th:field="*{name}"
+                       id="productName"
+                       name="productName"
+                       placeholder="Name">
             </div>
             <div>
-                <label for="inputPassword">Password</label>
-                <input type="text" id="inputPassword" name="password" placeholder="password">
+                <label for="type">Type</label>
+                <input type="text" id="type" name="type" placeholder="Type">
             </div>
             <div>
-                <button type="submit">Login</button>
+                <label for="price">Price</label>
+                <input type="text" id="price" name="price" placeholder="Price">
+            </div>
+            <div>
+                <label for="description">Description</label>
+                <input type="text" id="description" name="description" placeholder="Description">
+            </div>
+            <div>
+                <label for="manufacturer">Manufacturer</label>
+                <input type="text" id="manufacturer" name="manufacturer" placeholder="Manufacturer">
+            </div>
+            <div>
+                <button type="submit">Create</button>
             </div>
         </form>
     </div>
+    <!--    All Products-->
+    <div></div>
 </div>
 <div th:replace="~{fragments/footer}"></div>
 </body>

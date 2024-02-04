@@ -22,6 +22,10 @@ public class Product extends BaseEntity {
     @Column(nullable = false)
     private BigDecimal price;
     private String description;
+
+//    TODO: manufacturer and imageUrl
     @ManyToOne
     private Partner manufacturer;
+
+    private String imageUrl;
 }

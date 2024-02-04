@@ -1,4 +1,4 @@
-package bg.softuni.BarrelWineCornerApp.model.dto;
+package bg.softuni.BarrelWineCornerApp.model.dto.view;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,5 +19,4 @@ public class ReservationViewDTO {
     private LocalDate date;
     private LocalTime time;
     private boolean approved;
-
 }

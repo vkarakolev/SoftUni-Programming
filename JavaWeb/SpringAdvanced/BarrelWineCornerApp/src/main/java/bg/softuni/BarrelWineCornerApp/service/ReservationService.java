@@ -1,7 +1,7 @@
 package bg.softuni.BarrelWineCornerApp.service;
 
 import bg.softuni.BarrelWineCornerApp.model.dto.AddReservationDTO;
-import bg.softuni.BarrelWineCornerApp.model.dto.ReservationViewDTO;
+import bg.softuni.BarrelWineCornerApp.model.dto.view.ReservationViewDTO;
 
 import java.util.List;
 
