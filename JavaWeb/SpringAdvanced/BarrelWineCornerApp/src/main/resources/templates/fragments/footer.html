@@ -2,14 +2,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/fd324e62f7.js" crossorigin="anonymous"></script>
     <title>Title</title>
 </head>
 <body>
-<footer th:fragment="footer" class="footer bg-blur rounded">
-    <div class="container-fluid text-center">
-        <div class="h5 text-white">
-            <!-- TODO add some text-->
-        </div>
+<footer th:fragment="footer">
+    <div class="social">
+        <ul>
+            <li>
+                <a th:href="@{/}"><i class="fa-brands fa-facebook fa-xl" style="color: #e4e4e4;"></i></a>
+            </li>
+            <li>
+                <a th:href="@{/}"><i class="fa-brands fa-instagram fa-xl" style="color: #e4e4e4;"></i></a>
+            </li>
+            <li>
+                <a th:href="@{/}"><i class="fa-brands fa-tiktok fa-xl" style="color: #e4e4e4;"></i></a>
+            </li>
+        </ul>
     </div>
 </footer>
 </body>

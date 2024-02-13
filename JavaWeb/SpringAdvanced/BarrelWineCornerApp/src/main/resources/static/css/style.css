@@ -4,7 +4,7 @@ html {
 
 header {
     background-size: cover;
-    background: #000000;
+    background: #242424;
     margin: 0rem;
 }
 
@@ -26,20 +26,20 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-     color: white;
-     font-weight: bold;
+    color: #e4e4e4;
+    font-weight: bold;
 }
 
 .logo {
     display: flex;
-    width: 60px;
+    width: 180px;
     height: 60px;
 }
 
 .logout {
     background: none;
     border: none;
-    color: white;
+    color: #e4e4e4;
     text-decoration:none;
     font-size: medium;
     font-weight: bold;
@@ -48,6 +48,14 @@ nav ul li a {
 
 body {
     margin: 0;
+    background: #e4e4e4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.wrapper {
+    flex-grow: 1;
 }
 
 h1 {
@@ -73,4 +81,36 @@ td, th {
 
 tr:nth-child(even) {
     background-color: #dddddd;
+}
+
+footer {
+    background: #242424;
+    margin: 0rem;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.social ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 8px;
+}
+
+.social ul li {
+    display: inline-block;
+    margin-inline: 5px;
+    width: 32px;
+    height: 32px;
+}
+
+.social ul li a {
+    width: 32px;
+    height: 32px;
+    line-height 32px;
+    display: inline-block;
 }
