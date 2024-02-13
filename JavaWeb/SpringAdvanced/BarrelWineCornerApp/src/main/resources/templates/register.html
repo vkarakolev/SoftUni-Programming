@@ -36,7 +36,12 @@
             </div>
             <div>
                 <label for="inputRole">Role</label>
-                <input type="text" id="inputRole" name="role" placeholder="role">
+                <select id="inputRole"
+                        name="role"
+                        th:field="*{role}">
+                    <option value="" selected>Select role</option>
+                    <option th:each="role: ${roles}" th:text="${role}" th:value="${role}">Select role</option>
+                </select>
             </div>
             <div>
                 <button type="submit">Register</button>

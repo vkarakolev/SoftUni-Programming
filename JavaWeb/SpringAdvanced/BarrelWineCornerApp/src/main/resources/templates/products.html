@@ -16,6 +16,7 @@
     <h1>Products</h1>
     <!--    Create Product-->
     <div>
+        <h2>New Product</h2>
         <form th:action="@{/products}"
               th:method="POST"
               th:object="${createProductDTO}">
@@ -29,7 +30,14 @@
             </div>
             <div>
                 <label for="type">Type</label>
-                <input type="text" id="type" name="type" placeholder="Type">
+                <select id="type"
+                        name="type"
+                        th:field="*{type}">
+                    <option value="" selected>Select type</option>
+                    <option th:each="productType: ${productTypes}"
+                            th:text="${productType}"
+                            th:value="${productType}">Select type</option>
+                </select>
             </div>
             <div>
                 <label for="price">Price</label>
@@ -42,6 +50,10 @@
             <div>
                 <label for="manufacturer">Manufacturer</label>
                 <input type="text" id="manufacturer" name="manufacturer" placeholder="Manufacturer">
+            </div>
+            <div>
+                <label for="imageUrl">Image Url</label>
+                <input type="text" id="imageUrl" name="imageUrl" placeholder="Image Url">
             </div>
             <div>
                 <button type="submit">Create</button>

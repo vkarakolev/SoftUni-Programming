@@ -1,9 +1,11 @@
 package bg.softuni.BarrelWineCornerApp.controller;
 
 import bg.softuni.BarrelWineCornerApp.model.dto.UserRegisterDTO;
+import bg.softuni.BarrelWineCornerApp.model.enums.Role;
 import bg.softuni.BarrelWineCornerApp.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.aspectj.weaver.NewConstructorTypeMunger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,12 +26,14 @@ public class UserController {
 
     @GetMapping("/register")
     public ModelAndView register(Model model) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("roles", Role.getRoles());
 
         if(!model.containsAttribute("userRegisterDTO")){
             model.addAttribute("userRegisterDTO", new UserRegisterDTO());
         }
 
-        return new ModelAndView("register");
+        return (modelAndView);
     }
 
     @PostMapping("/register")

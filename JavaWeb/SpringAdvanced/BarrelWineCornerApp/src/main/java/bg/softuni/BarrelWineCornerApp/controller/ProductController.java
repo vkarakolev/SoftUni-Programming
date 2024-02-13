@@ -2,6 +2,7 @@ package bg.softuni.BarrelWineCornerApp.controller;
 
 import bg.softuni.BarrelWineCornerApp.model.dto.CreateProductDTO;
 import bg.softuni.BarrelWineCornerApp.model.dto.view.ProductViewDTO;
+import bg.softuni.BarrelWineCornerApp.model.enums.ProductType;
 import bg.softuni.BarrelWineCornerApp.service.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,7 @@ public class ProductController {
         ModelAndView modelAndView = new ModelAndView("products");
         List<ProductViewDTO> products = productService.getAll();
         modelAndView.addObject("allProducts", products);
+        modelAndView.addObject("productTypes", ProductType.getTypes());
 
         if (!model.containsAttribute("createProductDTO")) {
             model.addAttribute("createProductDTO", new CreateProductDTO());

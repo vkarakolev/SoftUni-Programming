@@ -23,7 +23,7 @@ public class Product extends BaseEntity {
     private BigDecimal price;
     private String description;
 
-//    TODO: manufacturer and imageUrl
+//    TODO: manufacturer
     @ManyToOne
     private Partner manufacturer;
 

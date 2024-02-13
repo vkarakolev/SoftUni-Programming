@@ -27,4 +27,7 @@ public class CreateProductDTO {
 
     @NotNull
     private String manufacturer;
+
+    @NotNull
+    private String imageUrl;
 }
