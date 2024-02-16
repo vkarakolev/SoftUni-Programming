@@ -114,3 +114,41 @@ footer {
     line-height 32px;
     display: inline-block;
 }
+
+.newProduct {
+    display: flex;
+    justify-content: center;
+}
+
+.formWrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    width: auto;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 15px;
+    box-shadow: rgba(0,0,0,0.8) -5px 5px 10px 0px;
+    border-collapse: collapse;
+}
+
+.allProducts {
+    margin: 1rem;
+}
+
+.productCard {
+    display: inline-block;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 15px;
+    box-shadow: rgba(0,0,0,0.8) -5px 5px 10px 0px;
+    border-collapse: collapse;
+}
+
+.productCard img {
+    border-radius: 15px;
+    width: 15rem;
+    height: 15rem;
+}

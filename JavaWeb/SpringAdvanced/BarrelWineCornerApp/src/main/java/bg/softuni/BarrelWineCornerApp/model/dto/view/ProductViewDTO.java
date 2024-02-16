@@ -23,4 +23,5 @@ public class ProductViewDTO {
     private BigDecimal price;
     private String description;
     private String manufacturer;
+    private String imageUrl;
 }

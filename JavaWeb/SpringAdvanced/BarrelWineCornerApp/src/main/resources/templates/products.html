@@ -15,53 +15,69 @@
     <div th:replace="~{fragments/navigation}"></div>
     <h1>Products</h1>
     <!--    Create Product-->
-    <div>
-        <h2>New Product</h2>
-        <form th:action="@{/products}"
-              th:method="POST"
-              th:object="${createProductDTO}">
-            <div>
-                <label for="productName">Name</label>
-                <input type="text"
-                       th:field="*{name}"
-                       id="productName"
-                       name="productName"
-                       placeholder="Name">
-            </div>
-            <div>
-                <label for="type">Type</label>
-                <select id="type"
-                        name="type"
-                        th:field="*{type}">
-                    <option value="" selected>Select type</option>
-                    <option th:each="productType: ${productTypes}"
-                            th:text="${productType}"
-                            th:value="${productType}">Select type</option>
-                </select>
-            </div>
-            <div>
-                <label for="price">Price</label>
-                <input type="text" id="price" name="price" placeholder="Price">
-            </div>
-            <div>
-                <label for="description">Description</label>
-                <input type="text" id="description" name="description" placeholder="Description">
-            </div>
-            <div>
-                <label for="manufacturer">Manufacturer</label>
-                <input type="text" id="manufacturer" name="manufacturer" placeholder="Manufacturer">
-            </div>
-            <div>
-                <label for="imageUrl">Image Url</label>
-                <input type="text" id="imageUrl" name="imageUrl" placeholder="Image Url">
-            </div>
-            <div>
-                <button type="submit">Create</button>
-            </div>
-        </form>
+    <!--    TODO: Only Admin-->
+    <div class="newProduct">
+        <div class="formWrapper">
+            <h2>New Product</h2>
+            <form th:action="@{/products}"
+                  th:method="POST"
+                  th:object="${createProductDTO}">
+                <div>
+                    <label for="productName">Name</label>
+                    <input type="text"
+                           th:field="*{name}"
+                           id="productName"
+                           name="productName"
+                           placeholder="Name">
+                </div>
+                <div>
+                    <label for="type">Type</label>
+                    <select id="type"
+                            name="type"
+                            th:field="*{type}">
+                        <option value="" selected>Select type</option>
+                        <option th:each="productType: ${productTypes}"
+                                th:text="${productType}"
+                                th:value="${productType}">Select type
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <label for="price">Price</label>
+                    <input type="text" id="price" name="price" placeholder="Price">
+                </div>
+                <div>
+                    <label for="description">Description</label>
+                    <input type="text" id="description" name="description" placeholder="Description">
+                </div>
+                <div>
+                    <label for="manufacturer">Manufacturer</label>
+                    <input type="text" id="manufacturer" name="manufacturer" placeholder="Manufacturer">
+                </div>
+                <div>
+                    <label for="imageUrl">Image Url</label>
+                    <input type="text" id="imageUrl" name="imageUrl" placeholder="Image Url">
+                </div>
+                <div>
+                    <button type="submit">Create</button>
+                </div>
+            </form>
+        </div>
     </div>
     <!--    All Products-->
-    <div></div>
+    <!--    TODO: Show by type  -->
+    <div class="allProducts" th:unless="${#lists.size(allProducts) == 0}">
+        <div class="productCard" th:each="p: ${allProducts}">
+            <img th:src="@{${p.imageUrl}}">
+            <h2 th:text="${p.name}"></h2>
+            <h3 th:text="${p.manufacturer}"></h3>
+            <h3 th:text="'Price: ' + ${p.price}"></h3>
+            <details>
+                <summary>Show more</summary>
+                <p th:text="${p.description}"></p>
+            </details>
+        </div>
+    </div>
 </div>
 <div th:replace="~{fragments/footer}"></div>
 </body>
