@@ -28,63 +28,72 @@
                 <th>Approve</th>
             </tr>
             <tr th:each="r: ${allReservations}">
-                <td th:text="${r.clientName}" />
-                <td th:text="${r.date}" />
-                <td th:text="${r.time}" />
-                <td th:text="${r.peopleCount}" />
-                <td th:text="${r.email}" />
-                <td th:text="${r.approved}" />
-                <td><button>Approve</button></td>
+                <td th:text="${r.clientName}"/>
+                <td th:text="${r.date}"/>
+                <td th:text="${r.time}"/>
+                <td th:text="${r.peopleCount}"/>
+                <td th:text="${r.email}"/>
+                <td th:text="${r.approved}"/>
+                <td>
+                    <button>Approve</button>
+                </td>
             </tr>
         </table>
     </div>
     <!--    Create reservation      -->
-    <div>
-        <form th:action="@{/reservations}"
-              th:method="post"
-              th:object="${addReservationDTO}">
-            <div>
-                <label for="createReservationEmail">Email</label>
-                <input type="text"
-                       th:field="*{email}"
-                       id="createReservationEmail"
-                       name="createReservationEmail"
-                       placeholder="email">
-            </div>
-            <div>
-                <label for="createReservationName">Client Name</label>
-                <input type="text"
-                       th:field="*{clientName}"
-                       id="createReservationName"
-                       name="createReservationName"
-                       placeholder="name">
-            </div>
-            <div>
-                <label for="createReservationCount">People Count</label>
-                <input type="number"
-                       th:field="*{peopleCount}"
-                       id="createReservationCount"
-                       name="createReservationCount"
-                       placeholder="count">
-            </div>
-            <div>
-                <label for="createReservationDate">Date</label>
-                <input type="date"
-                       th:field="*{date}"
-                       id="createReservationDate"
-                       name="createReservationDate">
-            </div>
-            <div>
-                <label for="createReservationTime">Time</label>
-                <input type="time"
-                       th:field="*{time}"
-                       id="createReservationTime"
-                       name="createReservationTime">
-            </div>
-            <div>
-                <button type="submit">Reserve</button>
-            </div>
-        </form>
+    <div class="formWidth">
+        <div class="formWrapper">
+            <form th:action="@{/reservations}"
+                  th:method="post"
+                  th:object="${addReservationDTO}">
+                <div class="formRow">
+                    <label for="email">Email</label>
+                    <input class="formInput"
+                           type="text"
+                           th:field="*{email}"
+                           id="email"
+                           name="email"
+                           placeholder="email">
+                </div>
+                <div class="formRow">
+                    <label for="name">Client Name</label>
+                    <input class="formInput"
+                           type="text"
+                           th:field="*{clientName}"
+                           id="name"
+                           name="name"
+                           placeholder="name">
+                </div>
+                <div class="formRow">
+                    <label for="count">People Count</label>
+                    <input class="formInput"
+                           type="number"
+                           th:field="*{peopleCount}"
+                           id="count"
+                           name="count"
+                           placeholder="count">
+                </div>
+                <div class="formRow">
+                    <label for="date">Date</label>
+                    <input class="formInput"
+                           type="date"
+                           th:field="*{date}"
+                           id="date"
+                           name="date">
+                </div>
+                <div class="formRow">
+                    <label for="time">Time</label>
+                    <input class="formInput"
+                           type="time"
+                           th:field="*{time}"
+                           id="time"
+                           name="time">
+                </div>
+                <div class="submit">
+                    <button class="formInput" type="submit">Reserve</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 <div th:replace="~{fragments/footer}"></div>
