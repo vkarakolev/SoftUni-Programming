@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Getter
 @Setter
-public class CreateProductDTO {
+public class ActionProductDTO {
     @NotNull
     private String name;
 

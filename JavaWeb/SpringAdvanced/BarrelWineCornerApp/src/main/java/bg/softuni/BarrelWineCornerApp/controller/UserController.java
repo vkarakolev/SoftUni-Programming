@@ -27,7 +27,7 @@ public class UserController {
     @GetMapping("/register")
     public ModelAndView register(Model model) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("roles", Role.getRoles());
+        modelAndView.addObject("roles", Role.values());
 
         if(!model.containsAttribute("userRegisterDTO")){
             model.addAttribute("userRegisterDTO", new UserRegisterDTO());

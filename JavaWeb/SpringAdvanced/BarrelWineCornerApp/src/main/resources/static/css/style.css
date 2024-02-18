@@ -198,3 +198,22 @@ select {
     width: 139px;
     height: 21.5px;
 }
+
+.action {
+    margin: 0.5rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.action a, .action form {
+    width: 40%;
+}
+
+.actionBtn {
+    margin: 0px;
+    width: 100%;
+    background: #e4e4e4;
+    border-radius: 10px;
+    box-shadow: rgba(0,0,0,0.8) -2px 2px 10px -2px;
+    border-collapse: collapse;
+}

@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 @Setter
 @SuperBuilder
 public class ProductViewDTO {
+    private Long id;
     private String name;
     private ProductType type;
     private BigDecimal price;
