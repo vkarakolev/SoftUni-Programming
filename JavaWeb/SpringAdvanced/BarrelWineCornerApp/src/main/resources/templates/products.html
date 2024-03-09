@@ -19,17 +19,17 @@
     <div class="formWidth">
         <div class="formWrapper">
             <h2>New Product</h2>
-            <form th:action="@{/products}"
+            <form th:action="@{/products/add}"
                   th:method="POST"
                   th:object="${actionProductDTO}">
                 <div class="formRow">
                     <label for="productName">Name</label>
                     <input class="formInput"
                            type="text"
-                           th:field="*{name}"
                            id="productName"
                            name="productName"
-                           placeholder="Name">
+                           placeholder="Name"
+                           th:field="*{name}">
                 </div>
                 <div class="formRow">
                     <label for="type">Type</label>
@@ -83,7 +83,7 @@
                 <a th:href="@{products/edit/{id}(id=${p.id})}">
                     <button class="actionBtn">Edit</button>
                 </a>
-                <form th:action="@{products/delete/{id}(id=${p.id})}"
+                <form th:action="@{products/remove/{id}(id=${p.id})}"
                       th:method="DELETE">
                     <button class="actionBtn">Delete</button>
                 </form>

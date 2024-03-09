@@ -38,4 +38,17 @@ public class ProductServiceImpl implements ProductService {
                 .map(product -> modelMapper.map(product, ProductViewDTO.class))
                 .orElseThrow();
     }
+
+    @Override
+    public void editProduct(ActionProductDTO actionProductDTO, Long id) {
+        Product product = modelMapper.map(actionProductDTO, Product.class);
+        product.setId(id);
+        productRepository.save(product);
+    }
+
+    @Override
+    public void remove(Long id) {
+        Product product = productRepository.findById(id).orElseThrow();
+        productRepository.delete(product);
+    }
 }

@@ -18,7 +18,7 @@
     <div class="formWidth">
         <div class="formWrapper">
             <h2>Edit Product</h2>
-            <form th:action="@{products/edit/{id}(id=${product.id})}"
+            <form th:action="@{/products/edit/{id}(id=${product.id})}"
                   th:method="PUT"
                   th:object="${actionProductDTO}">
                 <div class="formRow">
@@ -27,7 +27,7 @@
                            type="text"
                            th:value="${product.name}"
                            id="productName"
-                           name="productName">
+                           th:name="name">
                 </div>
                 <div class="formRow">
                     <label for="type">Type</label>

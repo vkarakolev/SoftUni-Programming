@@ -11,4 +11,8 @@ public interface ProductService {
     void addProduct(ActionProductDTO createProductDTO);
 
     ProductViewDTO getById(Long id);
+
+    void editProduct(ActionProductDTO actionProductDTO, Long id);
+
+    void remove(Long id);
 }

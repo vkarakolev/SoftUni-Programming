@@ -39,6 +39,7 @@
                 </td>
             </tr>
         </table>
+        <div class="notification" th:if="${#lists.size(allReservations) == 0}">There is no reservations yet.</div>
     </div>
     <!--    Create reservation      -->
     <div class="formWidth">

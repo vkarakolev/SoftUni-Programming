@@ -217,3 +217,8 @@ select {
     box-shadow: rgba(0,0,0,0.8) -2px 2px 10px -2px;
     border-collapse: collapse;
 }
+
+.notification {
+    display: flex;
+    justify-content: center;
+}
