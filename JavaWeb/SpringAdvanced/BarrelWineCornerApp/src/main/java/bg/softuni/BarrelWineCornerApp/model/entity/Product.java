@@ -14,18 +14,20 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Table(name = "products")
 public class Product extends BaseEntity {
+
     @Column(nullable = false, unique = true)
     private String name;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ProductType type;
+
     @Column(nullable = false)
     private BigDecimal price;
+
     private String description;
 
-//    TODO: manufacturer
-    @ManyToOne
-    private Partner manufacturer;
+    private String manufacturer;
 
     private String imageUrl;
 }

@@ -18,8 +18,8 @@ import java.util.List;
 public class Partner extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String name;
+
+    @Column(nullable = false)
     private int phoneNumber;
-    @OneToMany(mappedBy = "manufacturer")
-    private List<Product> products;
     private String address;
 }

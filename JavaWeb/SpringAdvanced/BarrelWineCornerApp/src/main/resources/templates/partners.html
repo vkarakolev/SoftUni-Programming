@@ -13,22 +13,43 @@
 <div class="wrapper">
     <!-- Navigation -->
     <div th:replace="~{fragments/navigation}"></div>
-    <h1>Login</h1>
+    <h1>Partners</h1>
+    <div class="formWidth">
+        <div class="formWrapper">
+            <h2>Add Partner</h2>
+            <form th:action="@{/partners/add}"
+                  th:method="POST"
+                  th:object="${ActionPartnerDTO}">
+                <div class="formRow">
+                    <label for="name">Name</label>
+                    <input class="formInput" type="text" id="name" name="name" placeholder="name">
+                </div>
+                <div class="formRow">
+                    <label for="phoneNumber">Phone Number</label>
+
+                    <!--   TODO: phone number pattern   -->
+                    <input class="formInput"
+                           type="tel"
+                           pattern="/^\+[0-9]+/gm"
+                           id="phoneNumber"
+                           name="phoneNumber"
+                           placeholder="phone number">
+                </div>
+                <div class="formRow">
+                    <label for="address">Address</label>
+                    <input class="formInput" type="text" id="address" name="address" placeholder="address">
+                </div>
+                <div class="submit">
+                    <button class="formInput" type="submit">Add Partner</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--            All Partners           -->
     <div>
-        <form th:action="@{/login}"
-              th:method="POST">
-            <div>
-                <label for="inputEmail">Email</label>
-                <input type="text" id="inputEmail" name="email" placeholder="email">
-            </div>
-            <div>
-                <label for="inputPassword">Password</label>
-                <input type="text" id="inputPassword" name="password" placeholder="password">
-            </div>
-            <div>
-                <button type="submit">Login</button>
-            </div>
-        </form>
+        <div class="partnerCard">
+
+        </div>
     </div>
 </div>
 <div th:replace="~{fragments/footer}"></div>

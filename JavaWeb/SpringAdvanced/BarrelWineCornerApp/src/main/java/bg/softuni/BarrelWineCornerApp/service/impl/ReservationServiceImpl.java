@@ -20,6 +20,7 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public List<ReservationViewDTO> getAll() {
+        // TODO: find all where date not in the past
         return reservationRepository.findAll().stream()
                 .map(reservation -> modelMapper.map(reservation, ReservationViewDTO.class))
                 .toList();
