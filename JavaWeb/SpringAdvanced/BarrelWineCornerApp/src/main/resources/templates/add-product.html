@@ -13,22 +13,21 @@
 <div class="wrapper">
     <!-- Navigation -->
     <div th:replace="~{fragments/navigation}"></div>
-    <!--    Edit Product-->
+    <h1>New Product</h1>
     <!--    TODO: Only Admin-->
-    <h1>Edit Product</h1>
     <div class="formWidth">
         <div class="formWrapper">
-
-            <form th:action="@{/products/edit/{id}(id=${product.id})}"
-                  th:method="PUT"
+            <form th:action="@{/products/add}"
+                  th:method="POST"
                   th:object="${actionProductDTO}">
                 <div class="formRow">
                     <label for="productName">Name</label>
                     <input class="formInput"
                            type="text"
-                           th:value="${product.name}"
                            id="productName"
-                           th:name="name">
+                           name="productName"
+                           placeholder="Name"
+                           th:field="*{name}">
                 </div>
                 <div class="formRow">
                     <label for="type">Type</label>
@@ -36,7 +35,7 @@
                             id="type"
                             name="type"
                             th:field="*{type}">
-                        <option th:value="${product.type}" th:text="${product.type}" selected></option>
+                        <option value="" selected>Select type</option>
                         <option th:each="productType: ${productTypes}"
                                 th:text="${productType}"
                                 th:value="${productType}">Select type
@@ -45,38 +44,23 @@
                 </div>
                 <div class="formRow">
                     <label for="price">Price</label>
-                    <input class="formInput"
-                           type="text"
-                           id="price"
-                           th:value="${product.price}"
-                           name="price">
+                    <input class="formInput" type="text" id="price" name="price" placeholder="Price">
                 </div>
                 <div class="formRow">
                     <label for="description">Description</label>
-                    <input class="formInput"
-                           type="text"
-                           id="description"
-                           th:value="${product.description}"
-                           name="description">
+                    <input class="formInput" type="text" id="description" name="description" placeholder="Description">
                 </div>
                 <div class="formRow">
                     <label for="manufacturer">Manufacturer</label>
-                    <input class="formInput"
-                           type="text"
-                           id="manufacturer"
-                           th:value="${product.manufacturer}"
-                           name="manufacturer">
+                    <input class="formInput" type="text" id="manufacturer" name="manufacturer"
+                           placeholder="Manufacturer">
                 </div>
                 <div class="formRow">
                     <label for="imageUrl">Image Url</label>
-                    <input class="formInput"
-                           type="text"
-                           id="imageUrl"
-                           th:value="${product.imageUrl}"
-                           name="imageUrl">
+                    <input class="formInput" type="text" id="imageUrl" name="imageUrl" placeholder="Image Url">
                 </div>
                 <div class="submit">
-                    <button class="formInput" type="submit">Edit</button>
+                    <button class="formInput submitBtn" type="submit">Create</button>
                 </div>
             </form>
         </div>

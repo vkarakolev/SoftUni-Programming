@@ -28,6 +28,13 @@ public class ProductController {
         ModelAndView modelAndView = new ModelAndView("products");
         List<ProductViewDTO> products = productService.getAll();
         modelAndView.addObject("allProducts", products);
+
+        return modelAndView;
+    }
+
+    @GetMapping("/add")
+    public ModelAndView add(Model model) {
+        ModelAndView modelAndView = new ModelAndView("add-product");
         modelAndView.addObject("productTypes", ProductType.values());
 
         if (!model.containsAttribute("actionProductDTO")) {

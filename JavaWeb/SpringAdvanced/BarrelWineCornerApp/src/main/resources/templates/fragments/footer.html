@@ -7,6 +7,23 @@
 </head>
 <body>
 <footer th:fragment="footer">
+    <div class="contacts">
+        <div class="address">
+            <a th:href="@{https://www.google.com/maps/place/KapanaPlovdiv+Center,+ul.+%22Abadzhiyska%22+4,+4000+Plovdiv/@42.1484733,24.7467303,17z/data=!3m1!4b1!4m6!3m5!1s0x14acd1bcd0f06ff1:0xaf01c7285dbd1ea7!8m2!3d42.1484694!4d24.7493052!16s%2Fg%2F11c5mly7gy?entry=ttu}"
+               th:target="_blank">
+                <i class="fa-solid fa-location-dot fa-sm" style="color: #e4e4e4;"></i>
+                <p>4 Abadzhiyska St., Plovdiv, Bulgaria</p>
+            </a>
+        </div>
+        <div class="phoneNumber">
+            <i class="fa-solid fa-phone fa-sm" style="color: #e4e4e4;"></i>
+            <p> +359884344567</p></div>
+    </div>
+    <div class="logo">
+        <a class="logo" th:href="@{/}">
+            <img class="logo" src="/images/logo.jpg" alt="logo">
+        </a>
+    </div>
     <div class="social">
         <ul>
             <li>

@@ -10,6 +10,6 @@ import lombok.experimental.SuperBuilder;
 @Setter
 public class PartnerViewDTO {
     private String name;
-    private int phoneNumber;
+    private String phoneNumber;
     private String address;
 }

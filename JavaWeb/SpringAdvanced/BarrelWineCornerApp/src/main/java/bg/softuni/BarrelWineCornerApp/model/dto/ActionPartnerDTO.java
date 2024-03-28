@@ -14,7 +14,7 @@ public class ActionPartnerDTO {
     private String name;
 
     @NotNull
-    private int phoneNumber;
+    private String phoneNumber;
 
     private String address;
 }

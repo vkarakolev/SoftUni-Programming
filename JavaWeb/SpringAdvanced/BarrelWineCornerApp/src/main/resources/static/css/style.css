@@ -65,10 +65,17 @@ h1 {
 
 h2 {
     color: #242424;
+    margin: 0px;
 }
 
 h3 {
     color: #242424;
+    margin: 0px;
+}
+
+h4 {
+    color: #242424;
+    margin: 0px;
 }
 
 table {
@@ -98,20 +105,42 @@ footer {
     height: 60px;
     width: 100%;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contacts div {
+    padding-left: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.contacts div a {
+    display: flex;
+    align-items: center;
+}
+
+.contacts p {
+    margin: 0px;
+    color: #e4e4e4;
+    margin-left: 5px;
+}
+
+.social {
+    padding-left: 5rem;
 }
 
 .social ul {
     list-style: none;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     margin: 8px;
 }
 
 .social ul li {
-    display: inline-block;
+    display: flex;
+    align-items: center;
     margin-inline: 5px;
     width: 32px;
     height: 32px;
@@ -121,7 +150,8 @@ footer {
     width: 32px;
     height: 32px;
     line-height 32px;
-    display: inline-block;
+    display: flex;
+    align-items: center;
 }
 
 .formWidth {
@@ -138,8 +168,8 @@ footer {
     width: auto;
     padding: 1rem;
     margin: 1rem;
-    border-radius: 15px;
-    box-shadow: rgba(0,0,0,0.8) -5px 5px 10px 0px;
+    border-radius: 5px;
+    box-shadow: rgba(0,0,0,0.8) 0px 0px 10px -5px;
     border-collapse: collapse;
 }
 
@@ -149,17 +179,21 @@ footer {
 
 .productCard {
     display: inline-block;
+    width: 15rem;
     margin: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 15px;
-    box-shadow: rgba(0,0,0,0.8) -5px 5px 10px 0px;
+    border-radius: 5px;
+    box-shadow: rgba(0,0,0,0.8) 0px 0px 10px -5px;
     border-collapse: collapse;
 }
 
 .productCard img {
-    border-radius: 15px;
     width: 15rem;
     height: 15rem;
+}
+
+.productInfo {
+    background: #dddddd;
+    padding: 0.5rem;
 }
 
 .formRow {
@@ -172,7 +206,8 @@ footer {
     text-align: center;
 }
 
-.submit button {
+.submitBtn {
+    background: #e4e4e4;
     color: #242424;
 }
 
@@ -184,8 +219,8 @@ label {
     margin-inline: 0.5rem;
     padding-inline: 0.5rem;
     background: #e4e4e4;
-    border-radius: 10px;
-    box-shadow: rgba(0,0,0,0.8) -2px 2px 10px -2px;
+    border-radius: 5px;
+    box-shadow: rgba(0,0,0,0.8) 0px 3px 10px -5px;
     border-collapse: collapse;
 }
 
@@ -200,7 +235,7 @@ select {
 }
 
 .action {
-    margin: 0.5rem;
+    margin-top: 0.5rem;
     display: flex;
     justify-content: space-around;
 }
@@ -213,12 +248,35 @@ select {
     margin: 0px;
     width: 100%;
     background: #e4e4e4;
-    border-radius: 10px;
-    box-shadow: rgba(0,0,0,0.8) -2px 2px 10px -2px;
+    color: #242424;
+    border-radius: 5px;
+    box-shadow: rgba(0,0,0,0.8) 0px 3px 10px -5px;
     border-collapse: collapse;
+    cursor:pointer;
+}
+
+.actionBtn:hover, .submitBtn:hover{
+    background: #242424;
+    color: #e4e4e4;
+}
+
+.btnWrapper {
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.btnWrapper a {
+    width: 6rem;
 }
 
 .notification {
     display: flex;
     justify-content: center;
 }
+
+summary {
+    cursor:pointer;
+}
+
+

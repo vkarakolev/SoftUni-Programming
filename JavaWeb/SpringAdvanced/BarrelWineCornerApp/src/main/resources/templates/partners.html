@@ -26,11 +26,8 @@
                 </div>
                 <div class="formRow">
                     <label for="phoneNumber">Phone Number</label>
-
-                    <!--   TODO: phone number pattern   -->
                     <input class="formInput"
                            type="tel"
-                           pattern="/^\+[0-9]+/gm"
                            id="phoneNumber"
                            name="phoneNumber"
                            placeholder="phone number">
@@ -47,9 +44,18 @@
     </div>
     <!--            All Partners           -->
     <div>
-        <div class="partnerCard">
-
-        </div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Address</th>
+            </tr>
+            <tr th:each="p: ${allPartners}">
+                <td th:text="${p.name}"/>
+                <td th:text="${p.phoneNumber}"/>
+                <td th:text="${p.address}"/>
+            </tr>
+        </table>
     </div>
 </div>
 <div th:replace="~{fragments/footer}"></div>

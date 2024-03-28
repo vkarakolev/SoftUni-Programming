@@ -20,6 +20,6 @@ public class Partner extends BaseEntity {
     private String name;
 
     @Column(nullable = false)
-    private int phoneNumber;
+    private String phoneNumber;
     private String address;
 }

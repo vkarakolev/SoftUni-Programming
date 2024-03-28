@@ -16,77 +16,33 @@
     <h1>Products</h1>
     <!--    Create Product-->
     <!--    TODO: Only Admin-->
-    <div class="formWidth">
-        <div class="formWrapper">
-            <h2>New Product</h2>
-            <form th:action="@{/products/add}"
-                  th:method="POST"
-                  th:object="${actionProductDTO}">
-                <div class="formRow">
-                    <label for="productName">Name</label>
-                    <input class="formInput"
-                           type="text"
-                           id="productName"
-                           name="productName"
-                           placeholder="Name"
-                           th:field="*{name}">
-                </div>
-                <div class="formRow">
-                    <label for="type">Type</label>
-                    <select class="formInput"
-                            id="type"
-                            name="type"
-                            th:field="*{type}">
-                        <option value="" selected>Select type</option>
-                        <option th:each="productType: ${productTypes}"
-                                th:text="${productType}"
-                                th:value="${productType}">Select type
-                        </option>
-                    </select>
-                </div>
-                <div class="formRow">
-                    <label for="price">Price</label>
-                    <input class="formInput" type="text" id="price" name="price" placeholder="Price">
-                </div>
-                <div class="formRow">
-                    <label for="description">Description</label>
-                    <input class="formInput" type="text" id="description" name="description" placeholder="Description">
-                </div>
-                <div class="formRow">
-                    <label for="manufacturer">Manufacturer</label>
-                    <input class="formInput" type="text" id="manufacturer" name="manufacturer"
-                           placeholder="Manufacturer">
-                </div>
-                <div class="formRow">
-                    <label for="imageUrl">Image Url</label>
-                    <input class="formInput" type="text" id="imageUrl" name="imageUrl" placeholder="Image Url">
-                </div>
-                <div class="submit">
-                    <button class="formInput" type="submit">Create</button>
-                </div>
-            </form>
-        </div>
+    <div class="btnWrapper">
+        <a th:href="@{products/add}">
+            <button class="actionBtn">New Product</button>
+        </a>
     </div>
     <!--    All Products-->
     <!--    TODO: Show by type  -->
     <div class="allProducts" th:unless="${#lists.size(allProducts) == 0}">
         <div class="productCard" th:each="p: ${allProducts}">
             <img th:src="@{${p.imageUrl}}">
-            <h2 th:text="${p.name}"></h2>
-            <h3 th:text="${p.manufacturer}"></h3>
-            <h3 th:text="'Price: ' + ${p.price}"></h3>
-            <details>
-                <summary>Show more</summary>
-                <p th:text="${p.description}"></p>
-            </details>
-            <div class="action">
-                <a th:href="@{products/edit/{id}(id=${p.id})}">
-                    <button class="actionBtn">Edit</button>
-                </a>
-                <form th:action="@{products/remove/{id}(id=${p.id})}"
-                      th:method="DELETE">
-                    <button class="actionBtn">Delete</button>
-                </form>
+            <div class="productInfo">
+                <h3 th:text="${p.name}"></h3>
+                <h4 th:text="${p.manufacturer}"></h4>
+                <h4 th:text="'Price: ' + ${p.price}"></h4>
+                <details>
+                    <summary>Show more</summary>
+                    <p th:text="${p.description}"></p>
+                </details>
+                <div class="action">
+                    <a th:href="@{products/edit/{id}(id=${p.id})}">
+                        <button class="actionBtn">Edit</button>
+                    </a>
+                    <form th:action="@{products/remove/{id}(id=${p.id})}"
+                          th:method="DELETE">
+                        <button class="actionBtn">Delete</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

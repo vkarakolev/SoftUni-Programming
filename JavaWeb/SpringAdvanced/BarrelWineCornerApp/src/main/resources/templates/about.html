@@ -13,22 +13,9 @@
 <div class="wrapper">
     <!-- Navigation -->
     <div th:replace="~{fragments/navigation}"></div>
-    <h1>Login</h1>
+    <h1>About Us</h1>
     <div>
-        <form th:action="@{/login}"
-              th:method="POST">
-            <div>
-                <label for="inputEmail">Email</label>
-                <input type="text" id="inputEmail" name="email" placeholder="email">
-            </div>
-            <div>
-                <label for="inputPassword">Password</label>
-                <input type="text" id="inputPassword" name="password" placeholder="password">
-            </div>
-            <div>
-                <button type="submit">Login</button>
-            </div>
-        </form>
+
     </div>
 </div>
 <div th:replace="~{fragments/footer}"></div>
