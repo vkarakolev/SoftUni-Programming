@@ -22,7 +22,7 @@ public class ReservationController {
     private final ReservationService reservationService;
 
     @GetMapping("/reservations")
-    public ModelAndView create(Model model) {
+    public ModelAndView get(Model model) {
 
         ModelAndView modelAndView = new ModelAndView("reservations");
 //        TODO: Role check

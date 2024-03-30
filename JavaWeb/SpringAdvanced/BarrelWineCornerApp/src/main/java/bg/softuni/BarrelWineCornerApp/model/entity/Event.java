@@ -20,7 +20,7 @@ public class Event extends BaseEntity {
     @Column(nullable = false)
     private LocalDate date;
     @Column(nullable = false)
-    private LocalTime hour;
+    private LocalTime time;
     private int maxPeopleCount;
     private String description;
     @Column(name = "image_url")

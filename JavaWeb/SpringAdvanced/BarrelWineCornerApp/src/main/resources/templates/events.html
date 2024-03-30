@@ -13,22 +13,29 @@
 <div class="wrapper">
     <!-- Navigation -->
     <div th:replace="~{fragments/navigation}"></div>
-    <h1>Login</h1>
-    <div>
-        <form th:action="@{/login}"
-              th:method="POST">
-            <div>
-                <label for="inputEmail">Email</label>
-                <input type="text" id="inputEmail" name="email" placeholder="email">
+    <h1>Events</h1>
+    <!--    Create Event-->
+    <!--    TODO: Only Admin-->
+    <div class="btnWrapper">
+        <a th:href="@{/events/add}">
+            <button class="actionBtn">New Event</button>
+        </a>
+    </div>
+    <!--    All Events-->
+    <!--    TODO: Show by type  -->
+    <div class="allEvents" th:unless="${#lists.size(allEvents) == 0}">
+        <div class="eventCard" th:each="e: ${allEvents}">
+            <img th:src="@{${e.imageUrl}}">
+            <div class="eventInfo">
+                <h3 th:text="${e.name}"></h3>
+                <h4 th:text="${e.description}"></h4>
+                <h4 th:text="'When: ' + ${e.date} + ' at ' + ${e.time} + ' o`clock.'"></h4>
+                <div class="peopleCount">
+                    <h4 th:text="'Reservations limit: ' +  ${e.maxPeopleCount} "></h4>
+                    <i class="fa-solid fa-person" style="color: #242424;"></i>
+                </div>
             </div>
-            <div>
-                <label for="inputPassword">Password</label>
-                <input type="text" id="inputPassword" name="password" placeholder="password">
-            </div>
-            <div>
-                <button type="submit">Login</button>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 <div th:replace="~{fragments/footer}"></div>

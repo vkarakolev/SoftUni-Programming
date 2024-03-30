@@ -30,6 +30,10 @@ nav ul li a {
     font-weight: bold;
 }
 
+.logoWrapper {
+    padding-left: 1rem;
+}
+
 .logo {
     display: flex;
     width: 180px;
@@ -127,7 +131,7 @@ footer {
 }
 
 .social {
-    padding-left: 5rem;
+    padding-left: 7rem;
 }
 
 .social ul {
@@ -174,7 +178,7 @@ footer {
 }
 
 .allProducts {
-    margin: 1rem;
+    margin: 2rem;
 }
 
 .productCard {
@@ -194,6 +198,45 @@ footer {
 .productInfo {
     background: #dddddd;
     padding: 0.5rem;
+}
+
+.allEvents {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.eventCard {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    margin-bottom: 1rem;
+}
+
+.eventCard img {
+    width: 25rem;
+}
+
+.eventInfo {
+    background: #dddddd;
+    padding: 0.5rem;
+    width: -webkit-fill-available;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.peopleCount {
+    display: flex;
+    align-items: center;
+}
+
+.peopleCount i {
+    padding-left: 0.5rem;
 }
 
 .formRow {
