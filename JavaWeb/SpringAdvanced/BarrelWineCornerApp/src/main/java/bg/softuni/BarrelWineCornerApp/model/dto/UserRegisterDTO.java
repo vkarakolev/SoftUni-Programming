@@ -25,6 +25,4 @@ public class UserRegisterDTO {
 
     @Size(min = 2)
     private String rePass;
-    @NotNull
-    private Role role;
 }
