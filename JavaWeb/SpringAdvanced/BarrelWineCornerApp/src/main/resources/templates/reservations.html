@@ -35,8 +35,13 @@
                 <td th:text="${r.email}"/>
                 <td th:text="${r.approved}"/>
                 <td>
-<!--                TODO: implement approval(email confirmation)-->
-                    <button class="formInput submitBtn">Approve</button>
+                    <!--                TODO: add email confirmation-->
+                    <form th:method="PUT"
+                          th:action="@{/reservations/approve/{id}(id=${r.id})}">
+                        <button th:disabled="${r.approved}"
+                                type="submit" class="formInput submitBtn">Approve
+                        </button>
+                    </form>
                 </td>
             </tr>
         </table>
@@ -45,8 +50,8 @@
     <!--    Create reservation      -->
     <div class="formWidth">
         <div class="formWrapper">
-            <form th:action="@{/reservations}"
-                  th:method="post"
+            <form th:action="@{/reservations/add}"
+                  th:method="POST"
                   th:object="${addReservationDTO}">
                 <div class="formRow">
                     <label for="email">Email</label>

@@ -13,6 +13,7 @@ import java.time.LocalTime;
 @Setter
 @SuperBuilder
 public class ReservationViewDTO {
+    private Long id;
     private String email;
     private String clientName;
     private int peopleCount;

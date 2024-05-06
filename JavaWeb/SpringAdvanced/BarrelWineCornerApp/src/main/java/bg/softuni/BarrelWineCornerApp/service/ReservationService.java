@@ -10,4 +10,6 @@ public interface ReservationService {
     List<ReservationViewDTO> getAll();
 
     void addReservation(AddReservationDTO addReservationDTO);
+
+    void approve(Long id);
 }

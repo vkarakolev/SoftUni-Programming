@@ -31,4 +31,11 @@ public class ReservationServiceImpl implements ReservationService {
         Reservation reservation = modelMapper.map(addReservationDTO, Reservation.class);
         reservationRepository.save(reservation);
     }
+
+    @Override
+    public void approve(Long id) {
+        Reservation reservation = reservationRepository.findById(id).orElseThrow();
+        reservation.setApproved(true);
+        reservationRepository.save(reservation);
+    }
 }
